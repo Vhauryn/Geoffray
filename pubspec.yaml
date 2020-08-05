@@ -1,0 +1,11 @@
+name: geoffrey
+version: 0.2.4
+description: >-
+  Geoofray is a modern http framework inspired by JavaScript modules and react-/vueJS hooks. 
+  It's focus is low level abstraction (depend less on 3rd party packages), simplicity, 
+  modular approach, safety and of caurse performance.
+environment:
+  sdk: ">=2.8.4 <3.0.0"
+dependencies:
+  meta: ^1.2.2
+  mime_type: ^0.3.2
