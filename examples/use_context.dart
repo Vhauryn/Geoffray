@@ -1,11 +1,11 @@
 import 'package:geoffrey/hooks.dart'
-    show useServe, useGet, useContext, useSubscribe, Context;
+    show useHttpServer, useGet, useContext, useSubscribe, Context;
 
 // Visit localhost:8080/home to switch to the secret context
 // Visit localhost:8080/about to switch back to the default context
 // Depending which context is subscribed certain routes are not be available!
 
-Future<void> main() async {
+void main() {
   // If no context name is provided it returns the default context.
   // If a context name is provided a new context is created or an
   // existing context returned
@@ -41,5 +41,5 @@ Future<void> main() async {
   // Since we lastly have subscribed to the secretContext
   // the server will only listen to those routes inside the secretContext
   // So you won't reach /home till you've visited /about
-  useServe('localhost', 8080);
+  useHttpServer('localhost', 8080);
 }

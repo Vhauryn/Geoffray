@@ -1,9 +1,9 @@
 import 'package:geoffrey/hooks.dart'
-    show useServe, useGet, usePublicDir, useContext, useSubscribe;
+    show useHttpServer, useGet, usePublicDir, useContext, useSubscribe;
 
 // visit http://localhost:8080/switch to toggle the context
 
-Future<void> main() async {
+void main() {
   var ctx1 = useContext('default');
   useSubscribe(ctx1);
 
@@ -29,5 +29,5 @@ Future<void> main() async {
       },
       handleGuard: (req, res) => true);
 
-  useServe('localhost', 8080);
+  useHttpServer('localhost', 8080);
 }
