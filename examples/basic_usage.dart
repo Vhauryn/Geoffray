@@ -25,6 +25,7 @@ void main() {
       handleGuard: (req, res) => false);
 
   // here we set a custom method
+  // todo: re-think the naming!
   useCustomMethod(
       route: '/home',
       method: 'x-magic-rabbit',
