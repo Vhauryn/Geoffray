@@ -2,8 +2,6 @@ import 'package:geoffrey/hooks.dart'
     show useHttpServer, useGet, usePost, useCustom;
 
 void main() {
-  // HOOK ORDER DOES NOT MATTER!!!
-
   // creates a new HttpServer, binds it to the given
   // host:port and handles incoming requests
   useHttpServer('localhost', 8080);

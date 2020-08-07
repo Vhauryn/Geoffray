@@ -5,7 +5,7 @@ description: >-
   It's focus is low level abstraction (depend less on 3rd party packages), simplicity, 
   modular approach, safety and of caurse performance.
 environment:
-  sdk: ">=2.8.4 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 dependencies:
   meta: ^1.2.2
   mime_type: ^0.3.2

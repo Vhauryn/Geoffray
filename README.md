@@ -6,29 +6,15 @@ It's focus is low level abstraction (if possible no 3rd party packages), simplic
 While Dart has aged well in the last few years it is yet one of the new pro,ising technologies out there.
 to be continue..
 
+## Install Geoffray
+Simply add geoffray:<version> to the pubspec.yaml
+Then run **pub get** or if flutter sdk is installed run **flutter pub get**
 
-    EDIT this ---------
-
+## Recommended VSCode Extensions
+While you don't need any additional tools or plugins to work with geoffray,
+we still want to give you some awesome extensions on your hands that help you code.
+- Bracket Pair Colorizer 2
+- intent-rainbow
 
 # How to use examples
     Just run dart ./examples/<example.dart>
-
-# TODOs
-
-## File Server
-* impl. gzip and e-tag for serving file
-* reduce i/o on disk/ssd like loading files in memory and watch for changes
-  
-## Hooks
-* impl. hooks to also work with async
-
-## Test
-* impl. unit tests
-
-## Agenda on next meeting
-* should we impl. a cli?
-* should we impl. hot reload?
-
-# Reminder
-* add examples!
-* add tests
