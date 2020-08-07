@@ -1,10 +1,11 @@
 import 'package:meta/meta.dart';
-import '../globals/typedefs.dart';
 import '../globals/state.dart';
 import '../helpers/add_route.dart';
+import '../globals/typedefs.dart'
+    show POST, ROUTES, HandleReqRes, HandleMiddleware;
 
-void useDelete(
+void usePost(
         {@required String route,
         @required HandleReqRes handleRequest,
         HandleMiddleware handleGuard}) =>
-    addRoute(state[ROUTES], DELETE, route, handleRequest, handleGuard);
+    addRoute(state[ROUTES], POST, route, handleRequest, handleGuard);
