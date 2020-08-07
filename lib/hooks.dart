@@ -17,4 +17,5 @@ export 'src/hooks/use_json.dart';
 export 'src/hooks/use_create_http_server.dart';
 export 'src/hooks/use_listen_request_handler.dart';
 export 'src/hooks/use_public_dir.dart';
+export 'src/hooks/use_remove_get.dart';
 export 'dart:io' show HttpRequest, HttpResponse, HttpServer;
