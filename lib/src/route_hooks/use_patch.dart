@@ -1,10 +1,11 @@
 import 'package:meta/meta.dart';
-import '../globals/typedefs.dart';
 import '../globals/state.dart';
 import '../helpers/add_route.dart';
+import '../globals/typedefs.dart'
+    show PATCH, ROUTES, HandleReqRes, HandleMiddleware;
 
-void useGet(
+void usePatch(
         {@required String route,
         @required HandleReqRes handleRequest,
         HandleMiddleware handleGuard}) =>
-    addRoute(state[ROUTES], GET, route, handleRequest, handleGuard);
+    addRoute(state[ROUTES], PATCH, route, handleRequest, handleGuard);
