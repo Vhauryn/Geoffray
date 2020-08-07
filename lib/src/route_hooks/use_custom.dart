@@ -4,7 +4,7 @@ import '../helpers/add_route.dart';
 import '../globals/typedefs.dart'
     show ROUTES, HandleReqRes, HandleMiddleware;
 
-void useCustomMethod(
+void useCustom(
         {@required String route,
         @required String method,
         @required HandleReqRes handleRequest,

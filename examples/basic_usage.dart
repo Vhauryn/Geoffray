@@ -1,5 +1,5 @@
 import 'package:geoffrey/hooks.dart'
-    show useHttpServer, useGet, usePost, useCustomMethod;
+    show useHttpServer, useGet, usePost, useCustom;
 
 void main() {
   // HOOK ORDER DOES NOT MATTER!!!
@@ -25,8 +25,7 @@ void main() {
       handleGuard: (req, res) => false);
 
   // here we set a custom method
-  // todo: re-think the naming!
-  useCustomMethod(
+  useCustom(
       route: '/home',
       method: 'x-magic-rabbit',
       handleRequest: (req, res) => res.write('a wild magic rabbit appeared!'),
