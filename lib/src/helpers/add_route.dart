@@ -4,7 +4,7 @@ import '../globals/typedefs.dart';
 void addRoute(HashMap<String, HashMap<String, Map<String, Function>>> routes,
     String method, String path, HandleReqRes hr,
     [HandleMiddleware hg]) {
-  if (path.contains('/'))
+  if (path == '/')
     throw 'The route "/" is used for serving html/files and thus can\'t be set!';
 
   putMethod() => {REQUEST: hr, GUARD: hg};
