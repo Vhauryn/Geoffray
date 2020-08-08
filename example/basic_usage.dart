@@ -17,10 +17,10 @@ void main() {
   // creates a new route with GET method
   // or if route exists appends a new method to it
   // overrides the method if it already exists
-  useGet(
-      route: '/home',
-      handleRequest: (req, res) => res.write('hallo'),
-      handleGuard: (req, res) => true);
+  // useGet(
+  //     route: '/home',
+  //     handleRequest: (req, res) => res.write('hallo'),
+  //     handleGuard: (req, res) => true);
 
   // here we add an additional post method to the route /
   // since handleGuard returns false we will get a 422 Unprocessable Entity
