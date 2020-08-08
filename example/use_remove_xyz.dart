@@ -14,7 +14,7 @@ void main() {
   useSubscribe(ctx1);
 
   // this public dir will be bound to the subscribed context
-  usePublicDir('./examples/mocks_data_assets/web-default');
+  usePublicDir('./example/mocks_data_assets/web-default');
 
   // adding /switch route to default context
   useGet(
@@ -27,7 +27,7 @@ void main() {
 
   var ctx2 = useContext('secret');
   useSubscribe(ctx2);
-  usePublicDir('./examples/mocks_data_assets/web-secret');
+  usePublicDir('./example/mocks_data_assets/web-secret');
 
   // adding /switch route to secret
   useGet(

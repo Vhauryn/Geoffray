@@ -13,10 +13,10 @@ class Context {
   Map<String, Object> _defaultResponseHeaders = Map();
   get middlewares => this._middlewares;
   get routes => this._routes;
-  set routes(var routes) => this._routes = routes;
   get defaultResponseHeaders => this._defaultResponseHeaders;
   get publicDir => this._publicDir;
-  get ctxName => this._ctxName;
+  get ctxName => this._ctxName ?? DEFAULT;
+  set routes(var routes) => this._routes = routes;
   set ctxName(String newCtxName) => this._ctxName = newCtxName;
   set publicDir(String newPublicDir) => this._publicDir = newPublicDir;
 }
