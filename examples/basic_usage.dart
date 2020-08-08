@@ -6,6 +6,14 @@ void main() {
   // host:port and handles incoming requests
   useHttpServer('localhost', 8080);
 
+  // setting / as route will throw an Error
+  // this is due to the / route is reserved for 
+  // serving html/files
+  // useGet(
+  //     route: '/',
+  //     handleRequest: (req, res) => res.write('reserved route!'),
+  //     handleGuard: (req, res) => true);
+
   // creates a new route with GET method
   // or if route exists appends a new method to it
   // overrides the method if it already exists
