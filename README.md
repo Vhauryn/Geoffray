@@ -17,4 +17,4 @@ we still want to give you some awesome extensions on your hands that help you co
 - intent-rainbow
 
 # How to use examples
-    Just run dart ./examples/<example.dart>
+    Just run dart ./example/<example.dart>

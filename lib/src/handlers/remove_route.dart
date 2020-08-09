@@ -3,7 +3,7 @@ import '../globals/state.dart';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
-HashMap<String, HashMap<String, Map<String, Function>>> handleRemoveRoute(
+HashMap<String, HashMap<String, Map<String, Function>>> removeRoute(
     HashMap<String, HashMap<String, Map<String, Function>>> routes,
     String route,
     String method) {

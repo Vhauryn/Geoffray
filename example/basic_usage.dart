@@ -2,13 +2,6 @@ import 'package:geoffrey/hooks.dart'
     show useHttpServer, useGet, usePost, useCustom;
 
 void main() {
-  // setting / as a route will throw an Error
-  // this is due to the / route is reserved for serving html/files
-  // useGet(
-  //     route: '/',
-  //     handleRequest: (req, res) => res.write('reserved route!'),
-  //     handleGuard: (req, res) => true);
-
   // creates a new HttpServer, binds it to the given
   // host:port and handles incoming requests
   useHttpServer('localhost', 8080);

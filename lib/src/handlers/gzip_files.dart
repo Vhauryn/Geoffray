@@ -1,5 +1,5 @@
 
 // researching!
-handleGzip() {
+gzipFiles() {
 
 }

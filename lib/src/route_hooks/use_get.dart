@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 import '../globals/state.dart';
-import '../helpers/add_route.dart';
+import '../handlers/add_route.dart';
 import '../globals/typedefs.dart'
     show GET, ROUTES, HandleReqRes, HandleMiddleware;
 

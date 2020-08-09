@@ -4,7 +4,7 @@ import '../globals/state.dart';
 import '../globals/typedefs.dart';
 import 'server_html_content.dart' show serveHtmlContent;
 
-void handleRoutes(HttpRequest request,
+void resolveRoutes(HttpRequest request,
     HashMap<String, HashMap<String, Map<String, Function>>> routes) async {
   String path = request.uri.path;
   String method = request.method;

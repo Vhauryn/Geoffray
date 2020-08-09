@@ -3,7 +3,7 @@ import 'package:mime_type/mime_type.dart' show mime;
 import '../globals/state.dart';
 import '../globals/typedefs.dart';
 
-Future<dynamic> handleServingFiles(HttpRequest req) async {
+Future<dynamic> serveFiles(HttpRequest req) async {
   final fileName = req.uri.pathSegments.last;
   final index = File('${state[PUBLIC_DIR]}/${req.uri.path}');
 
