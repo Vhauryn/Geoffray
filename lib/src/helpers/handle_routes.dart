@@ -9,8 +9,6 @@ void handleRoutes(HttpRequest request,
   String path = request.uri.path;
   String method = request.method;
 
-  print(path);
-
   if (routes.containsKey(path) && path != '/') {
     if (routes[path].containsKey(method)) {
       HandleMiddleware handleGuard = routes[path][method][GUARD];
