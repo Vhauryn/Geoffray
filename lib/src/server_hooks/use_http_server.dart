@@ -2,7 +2,7 @@ import 'dart:io';
 import '../globals/state.dart';
 import '../globals/typedefs.dart';
 import 'use_create_http_server.dart';
-import 'use_listen_request_handler.dart';
+import 'use_request_handler.dart';
 
 /** 
  * + Creates a new HttpServer 
@@ -16,5 +16,5 @@ void useHttpServer(String host, int port,
   if (defaultResponseHeader != null)
     defaultResponseHeader
         .forEach((key, value) => server.defaultResponseHeaders.add(key, value));
-  useListenRequestHandler(server);
+  useRequestHandler(server);
 }

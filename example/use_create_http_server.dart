@@ -1,5 +1,5 @@
 import 'package:geoffrey/hooks.dart'
-    show useCreateHttpServer, useListenRequestHandler, HttpServer, useGet;
+    show useCreateHttpServer, useRequestHandler, HttpServer, useGet;
 
 Future<void> main() async {
   // Creates and returns a new HttpServer and binds it to the given host:port
@@ -13,7 +13,7 @@ Future<void> main() async {
   server.defaultResponseHeaders.add('content-type', 'text/html');
 
   // Handles incomming requests
-  useListenRequestHandler(server);
+  useRequestHandler(server);
 
   // yeah Dart XML (aka JSX) would be awesome!
   const String htmlString = ''' 

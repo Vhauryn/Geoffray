@@ -4,19 +4,21 @@ export 'dart:io' show HttpRequest, HttpResponse, HttpServer;
 export 'src/globals/context.dart';
 export 'src/globals/typedefs.dart';
 
-// functionality hooks
-export 'src/server_hooks/use_default_response_headers.dart';
+// hooks
+export 'src/hooks/use_default_response_headers.dart';
 export 'src/hooks/use_middleware.dart';
 export 'src/hooks/use_context.dart';
 export 'src/hooks/use_subscribe.dart';
-export 'src/server_hooks/use_http_server.dart';
 export 'src/hooks/use_query_params.dart';
 export 'src/hooks/use_json.dart';
-export 'src/server_hooks/use_create_http_server.dart';
-export 'src/server_hooks/use_listen_request_handler.dart';
 export 'src/hooks/use_public_dir.dart';
 
-// hooks to add and remove routes
+// server hooks
+export 'src/server_hooks/use_create_http_server.dart';
+export 'src/server_hooks/use_request_handler.dart';
+export 'src/server_hooks/use_http_server.dart';
+
+// route hooks
 export 'src/route_hooks/use_get.dart';
 export 'src/route_hooks/use_delete.dart';
 export 'src/route_hooks/use_post.dart';
