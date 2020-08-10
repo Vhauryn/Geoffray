@@ -24,8 +24,9 @@ void resolveRoutes(HttpRequest request,
   await request.response.close();
 }
 
-bool handleMiddleware(HttpRequest req, HttpResponse res, Set Middlewares) =>
-    Middlewares.every((middleware) => middleware(res, req));
+bool handleMiddleware(HttpRequest req, HttpResponse res,
+        Set<bool Function(HttpRequest, HttpResponse)> Middlewares) =>
+    Middlewares.every((middleware) => middleware(req, res));
 
 void routeHandlers(HandleMiddleware handleGuard, HandleReqRes handleRequest,
     HttpRequest request) {

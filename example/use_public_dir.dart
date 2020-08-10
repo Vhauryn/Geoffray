@@ -20,6 +20,7 @@ void main() {
 
   var ctx2 = useContext('secret');
   useSubscribe(ctx2);
+
   usePublicDir('./example/mocks_data_assets/web-secret');
   useGet(
       route: '/switch',

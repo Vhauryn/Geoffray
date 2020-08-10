@@ -8,7 +8,7 @@ class Context {
   String _ctxName;
   Context(this._ctxName);
   String _publicDir;
-  Set<Function(HttpResponse, HttpRequest)> _middlewares = Set();
+  Set<bool Function(HttpRequest, HttpResponse)> _middlewares = Set();
   HashMap<String, HashMap<String, Map<String, Function>>> _routes = HashMap();
   Map<String, Object> _defaultResponseHeaders = Map();
   get middlewares => this._middlewares;

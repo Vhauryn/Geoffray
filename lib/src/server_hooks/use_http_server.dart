@@ -13,12 +13,18 @@ void useHttpServer(String host, int port,
   HttpServer server = await useCreateHttpServer(host, port,
       backlog: backlog, v60only: v60only, shared: shared);
 
+  setGzipAutoCompress(server);
+  setDefaultResponseHeaders(server);
+  useRequestHandler(server);
+}
+
+setGzipAutoCompress(HttpServer server) {
   server.autoCompress = true;
   server.defaultResponseHeaders.chunkedTransferEncoding = true;
+}
 
+setDefaultResponseHeaders(HttpServer server) {
   if (state[DEFAULT_RESPONSE_HEADERS].isNotEmpty)
     state[DEFAULT_RESPONSE_HEADERS]
         .forEach((key, value) => server.defaultResponseHeaders.add(key, value));
-
-  useRequestHandler(server);
 }
