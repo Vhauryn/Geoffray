@@ -1,7 +1,7 @@
 export 'dart:io' show HttpRequest, HttpResponse, HttpServer;
 
 // Types
-export 'src/globals/context.dart';
+export 'src/globals/context.dart' show Context;
 export 'src/globals/typedefs.dart';
 
 // hooks

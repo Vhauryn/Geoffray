@@ -1,6 +1,6 @@
 import 'dart:io';
 
-// optional params do not work yet : Dart 2.8.4
+// optional params do not work yet : Dart 2.9.0
 typedef HandleReqRes = void Function(HttpRequest req, HttpResponse res);
 typedef HandleMiddleware = bool Function(HttpRequest req, HttpResponse res);
 
