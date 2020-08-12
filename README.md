@@ -7,7 +7,7 @@ While Dart has aged well in the last few years it is yet one of the new promisin
 Compared to the other http frameworks Geoffrey is lightweight, straight forward and simple to use.
 
 ## Install Geoffrey
-Simply add geoffey to the pubspec.yaml
+Simply add geoffey to the pubspec.yaml (**not yet available!!!**)
 Then run **pub get** or if flutter sdk is installed run **flutter pub get**
 
 ## Recommended VSCode Extensions
