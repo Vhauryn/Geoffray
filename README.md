@@ -7,12 +7,13 @@ While Dart has aged well in the last few years it is yet one of the new promisin
 Compared to the other http frameworks Geoffrey is lightweight, straight forward and simple to use.
 
 ## Install Geoffrey
-Simply add geoffray:<version> to the pubspec.yaml
+Simply add geoffray to the pubspec.yaml
 Then run **pub get** or if flutter sdk is installed run **flutter pub get**
 
 ## Recommended VSCode Extensions
-While you don't need any additional tools or plugins to work with geoffray,
+While you don't need any additional tools or plugins to work with geoffrey,
 we still want to give you some awesome extensions on your hands that help you code.
+- Dart
 - Bracket Pair Colorizer 2
 - intent-rainbow
 
