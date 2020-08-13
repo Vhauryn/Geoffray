@@ -19,3 +19,11 @@ we still want to give you some awesome extensions on your hands that help you co
 
 # How to use examples
     Just run dart ./example/<example.dart>
+
+# Tests
+
+To run tests, please use the following:
+
+```
+pub run test test/use_get.dart
+```
