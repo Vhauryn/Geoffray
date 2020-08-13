@@ -22,8 +22,16 @@ we still want to give you some awesome extensions on your hands that help you co
 
 # Tests
 
-To run tests, please use the following:
+To run all the tests:
+
+```
+pub run test
+```
+
+To run a specific test, please use the following:
 
 ```
 pub run test test/use_get.dart
 ```
+
+When adding a new test, make sure that the file name is suffixed with '_test'.
