@@ -1,11 +1,11 @@
 import 'package:geoffrey/hooks.dart'
-    show useCreateHttpServer, useRequestHandler, HttpServer, useGet;
+    show useCreateSecureHttpServer, useRequestHandler, HttpServer, useGet;
 
 Future<void> main() async {
-  // Creates and returns a new HttpServer and binds it to the given host:port
+  // Creates and returns a new HttpServer and bindSecures it to the given host:port
   // You can do anything with the new server instance
   // HttpServer is the original low level Dart API!
-  HttpServer server = await useCreateHttpServer('localhost', 8080);
+  HttpServer server = await useCreateSecureHttpServer('localhost', 8080);
 
   // Easy fall back in case hooks are missing some desired functionality
   // If there's something missing please open an issue on GitHub
@@ -22,7 +22,7 @@ Future<void> main() async {
         hallo
       </span>
       <span style="color:blue">
-        world
+        secure
       </span>
     </h1>
   ''';

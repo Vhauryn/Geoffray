@@ -1,8 +1,8 @@
 import 'dart:io';
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
 import 'use_create_http_server.dart';
 import 'use_request_handler.dart';
+import '../helpers/set_gzip_auto_compress.dart';
+import '../helpers/set_default_response_headers.dart';
 
 /** 
  * + Creates a new HttpServer 
@@ -18,13 +18,3 @@ void useHttpServer(String host, int port,
   useRequestHandler(server);
 }
 
-setGzipAutoCompress(HttpServer server) {
-  server.autoCompress = true;
-  server.defaultResponseHeaders.chunkedTransferEncoding = true;
-}
-
-setDefaultResponseHeaders(HttpServer server) {
-  if (state[DEFAULT_RESPONSE_HEADERS].isNotEmpty)
-    state[DEFAULT_RESPONSE_HEADERS]
-        .forEach((key, value) => server.defaultResponseHeaders.add(key, value));
-}

@@ -1,4 +1,4 @@
-import '../handlers/remove_route.dart';
+import '../helpers/remove_route.dart';
 import '../globals/state.dart';
 import '../globals/typedefs.dart' show DELETE, ROUTES;
 
