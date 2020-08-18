@@ -3,14 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:geoffrey/hooks.dart'
     show
-        useCreateHttpServer,
-        useRequestHandler,
         useGet,
         useDelete,
         usePatch,
         usePost,
         useHead,
-        useCustom;
+        useCustom,
+        useHttpServer;
 
 void main() {
   HttpServer server;
@@ -23,8 +22,7 @@ void main() {
   group('Test HTTP Routes', () {
     tearDownAll(() async => await server.close(force: true));
     setUpAll(() async {
-      server = await useCreateHttpServer('localhost', 8080);
-      useRequestHandler(server);
+      server = await useHttpServer('localhost', 8080);
       useGet(route: '/home', handleRequest: (req, res) => res.write('1'));
       usePost(route: '/home', handleRequest: (req, res) => res.write('2'));
       useDelete(route: '/home', handleRequest: (req, res) => res.write('3'));
