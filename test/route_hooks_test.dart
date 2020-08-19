@@ -11,6 +11,7 @@ import 'package:geoffrey/hooks.dart'
         useHttpServer;
 
 void main() {
+  String home = '/home';
   HttpServer server;
   Dio dio = Dio(BaseOptions(
     baseUrl: "http://localhost:8080",
@@ -25,40 +26,43 @@ void main() {
       server = null;
       dio = null;
     });
+
     setUpAll(() async {
       server = await useHttpServer('localhost', 8080);
-      useGet(route: '/home', handleRequest: (req, res) => res.write('GET'));
-      usePost(route: '/home', handleRequest: (req, res) => res.write('POST'));
-      useDelete(route: '/home', handleRequest: (req, res) => res.write('DELETE'));
-      usePatch(route: '/home', handleRequest: (req, res) => res.write('PATCH'));
+      useGet(route: home, handleRequest: (req, res) => res.write('GET'));
+      usePost(route: home, handleRequest: (req, res) => res.write('POST'));
+      useDelete(route: home, handleRequest: (req, res) => res.write('DELETE'));
+      usePatch(route: home, handleRequest: (req, res) => res.write('PATCH'));
       useCustom(
-          route: '/home',
+          route: home,
           method: 'x-custom-method',
           handleRequest: (req, res) => res.write('CUSTOM'));
     });
     test('useGet', () async {
-      Response response = await dio.get("/home");
+      Response response = await dio.get(home);
       expect(response.toString(), equals('GET'));
     });
 
     test('usePost', () async {
-      Response response = await dio.post("/home",);
+      Response response = await dio.post(
+        home,
+      );
       expect(response.toString(), equals('POST'));
     });
 
     test('useDelete', () async {
-      Response response = await dio.delete("/home");
+      Response response = await dio.delete(home);
       expect(response.toString(), equals('DELETE'));
     });
 
     test('usePatch', () async {
-      Response response = await dio.patch("/home");
+      Response response = await dio.patch(home);
       expect(response.toString(), equals('PATCH'));
     });
 
     test('useCustom', () async {
       dio.options.method = 'x-custom-method';
-      Response response = await dio.request("/home");
+      Response response = await dio.request(home);
       expect(response.toString(), equals('CUSTOM'));
     });
   });
