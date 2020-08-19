@@ -11,6 +11,7 @@ Future<dynamic> serveFiles(HttpRequest req) async {
     return req.response.statusCode = HttpStatus.notFound;
 
   final mimeType = mime(fileName) ?? 'text/plain; charset=UTF-8';
+
   req.response.headers.add('content-type', mimeType);
   return await req.response.addStream(index.openRead());
 }

@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:collection';
+import 'server_html_content.dart' show serveHtmlContent;
+import 'handle_route.dart';
+import 'handle_middleware.dart';
 import '../globals/state.dart';
 import '../globals/typedefs.dart';
-import 'server_html_content.dart' show serveHtmlContent;
 
 void resolveRoutes(HttpRequest request,
     HashMap<String, HashMap<String, Map<String, Function>>> routes) async {
@@ -21,19 +23,10 @@ void resolveRoutes(HttpRequest request,
       request.response.statusCode = HttpStatus.methodNotAllowed;
   } else if (state[PUBLIC_DIR] != null) await serveHtmlContent(request);
 
+  // handle msg for index.html not available
+  // serve default html and favicon?
+  // available routes/configs like in swagger?
+  request.response.statusCode = HttpStatus.notFound;
+
   await request.response.close();
-}
-
-bool handleMiddleware(HttpRequest req, HttpResponse res,
-        Set<bool Function(HttpRequest, HttpResponse)> Middlewares) =>
-    Middlewares.every((middleware) => middleware(req, res));
-
-void handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
-    HttpRequest request) {
-  if (handleGuard != null && handleGuard(request, request.response))
-    handleRequest(request, request.response);
-  else if (handleGuard != null && !handleGuard(request, request.response))
-    request.response.statusCode = HttpStatus.unprocessableEntity;
-  else
-    handleRequest(request, request.response);
 }

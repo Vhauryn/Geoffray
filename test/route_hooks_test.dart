@@ -13,14 +13,19 @@ import 'package:geoffrey/hooks.dart'
 
 void main() {
   HttpServer server;
-  Dio dio = new Dio(BaseOptions(
+  Dio dio = Dio(BaseOptions(
     baseUrl: "http://localhost:8080",
     connectTimeout: 5000,
     receiveTimeout: 3000,
   ));
 
   group('Test HTTP Routes', () {
-    tearDownAll(() async => await server.close(force: true));
+    tearDownAll(() async {
+      await server.close(force: true);
+      dio.close(force: true);
+      server = null;
+      dio = null;
+    });
     setUpAll(() async {
       server = await useHttpServer('localhost', 8080);
       useGet(route: '/home', handleRequest: (req, res) => res.write('1'));
@@ -39,7 +44,7 @@ void main() {
     });
 
     test('usePost', () async {
-      Response response = await dio.post("/home");
+      Response response = await dio.post("/home",);
       expect(response.toString(), equals('2'));
     });
 
@@ -51,11 +56,6 @@ void main() {
     test('usePatch', () async {
       Response response = await dio.patch("/home");
       expect(response.toString(), equals('4'));
-    });
-
-    test('useHead', () async {
-      Response response = await dio.head("/home");
-      expect(response.toString(), equals(''));
     });
 
     test('useCustom', () async {
