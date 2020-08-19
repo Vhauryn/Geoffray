@@ -7,61 +7,59 @@ import 'package:geoffrey/hooks.dart'
         useDelete,
         usePatch,
         usePost,
-        useHead,
         useCustom,
         useHttpServer;
 
 void main() {
   HttpServer server;
-  Dio dio = new Dio(BaseOptions(
+  Dio dio = Dio(BaseOptions(
     baseUrl: "http://localhost:8080",
     connectTimeout: 5000,
     receiveTimeout: 3000,
   ));
 
   group('Test HTTP Routes', () {
-    tearDownAll(() async => await server.close(force: true));
+    tearDownAll(() async {
+      await server.close(force: true);
+      dio.close(force: true);
+      server = null;
+      dio = null;
+    });
     setUpAll(() async {
       server = await useHttpServer('localhost', 8080);
-      useGet(route: '/home', handleRequest: (req, res) => res.write('1'));
-      usePost(route: '/home', handleRequest: (req, res) => res.write('2'));
-      useDelete(route: '/home', handleRequest: (req, res) => res.write('3'));
-      usePatch(route: '/home', handleRequest: (req, res) => res.write('4'));
-      useHead(route: '/home', handleRequest: (req, res) => res.write('5'));
+      useGet(route: '/home', handleRequest: (req, res) => res.write('GET'));
+      usePost(route: '/home', handleRequest: (req, res) => res.write('POST'));
+      useDelete(route: '/home', handleRequest: (req, res) => res.write('DELETE'));
+      usePatch(route: '/home', handleRequest: (req, res) => res.write('PATCH'));
       useCustom(
           route: '/home',
           method: 'x-custom-method',
-          handleRequest: (req, res) => res.write('6'));
+          handleRequest: (req, res) => res.write('CUSTOM'));
     });
     test('useGet', () async {
       Response response = await dio.get("/home");
-      expect(response.toString(), equals('1'));
+      expect(response.toString(), equals('GET'));
     });
 
     test('usePost', () async {
-      Response response = await dio.post("/home");
-      expect(response.toString(), equals('2'));
+      Response response = await dio.post("/home",);
+      expect(response.toString(), equals('POST'));
     });
 
     test('useDelete', () async {
       Response response = await dio.delete("/home");
-      expect(response.toString(), equals('3'));
+      expect(response.toString(), equals('DELETE'));
     });
 
     test('usePatch', () async {
       Response response = await dio.patch("/home");
-      expect(response.toString(), equals('4'));
-    });
-
-    test('useHead', () async {
-      Response response = await dio.head("/home");
-      expect(response.toString(), equals(''));
+      expect(response.toString(), equals('PATCH'));
     });
 
     test('useCustom', () async {
       dio.options.method = 'x-custom-method';
       Response response = await dio.request("/home");
-      expect(response.toString(), equals('6'));
+      expect(response.toString(), equals('CUSTOM'));
     });
   });
 }

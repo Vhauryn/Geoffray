@@ -6,5 +6,6 @@ Map<String, dynamic> state = {
   ROUTES: contexts[DEFAULT].routes,
   DEFAULT_RESPONSE_HEADERS: contexts[DEFAULT].defaultResponseHeaders,
   PUBLIC_DIR: contexts[DEFAULT].publicDir,
-  CURRENT_CONTEXT: contexts[DEFAULT].ctxName
+  CURRENT_CONTEXT: contexts[DEFAULT].ctxName,
+  HTTP_PROTOCOL: contexts[DEFAULT].httpProtocol
 };
