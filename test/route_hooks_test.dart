@@ -2,24 +2,18 @@ import 'dart:io' show HttpServer;
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:geoffrey/hooks.dart'
-    show
-        useGet,
-        useDelete,
-        usePatch,
-        usePost,
-        useCustom,
-        useHttpServer;
+    show useGet, useDelete, usePatch, usePost, useCustom, useHttpServer;
 
 void main() {
-  String home = '/home';
-  HttpServer server;
-  Dio dio = Dio(BaseOptions(
-    baseUrl: "http://localhost:8080",
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
-  ));
-
   group('Test HTTP Routes', () {
+    String home = '/home';
+    HttpServer server;
+    Dio dio = Dio(BaseOptions(
+      baseUrl: "http://localhost:8080",
+      connectTimeout: 5000,
+      receiveTimeout: 3000,
+    ));
+    
     tearDownAll(() async {
       await server.close(force: true);
       dio.close(force: true);

@@ -5,8 +5,8 @@ Future<void> main() async {
   // Creates and returns a new HttpServer and bindSecures it to the given host:port
   // You can do anything with the new server instance
   // HttpServer is the original low level Dart API!
-  final sctx = useCertificates(certificate: 'cert.pem', privateKey: 'key.pem');
-  final server = await useCreateSecureHttpServer('localhost', 443, sctx);
+  final certs = useCertificates(certificate: 'cert.pem', privateKey: 'key.pem');
+  final server = await useCreateSecureHttpServer('localhost', 443, certs);
 
   // Easy fall back in case hooks are missing some desired functionality
   // If there's something missing please open an issue on GitHub
