@@ -26,7 +26,7 @@ void resolveRoutes(HttpRequest request,
   // handle msg for index.html not available
   // serve default html and favicon?
   // available routes/configs like in swagger?
-  request.response.statusCode = HttpStatus.notFound;
+  //request.response.statusCode = HttpStatus.notFound;
 
   await request.response.close();
 }
