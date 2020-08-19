@@ -14,7 +14,7 @@ void resolveRoutes(HttpRequest request,
       HandleMiddleware handleGuard = routes[path][method][GUARD];
       HandleReqRes handleResponse = routes[path][method][REQUEST];
       if (handleMiddleware(request, request.response, state[MIDDLEWARES]))
-        routehelpers(handleGuard, handleResponse, request);
+        handleRoute(handleGuard, handleResponse, request);
       else
         request.response.statusCode = HttpStatus.unprocessableEntity;
     } else
@@ -28,7 +28,7 @@ bool handleMiddleware(HttpRequest req, HttpResponse res,
         Set<bool Function(HttpRequest, HttpResponse)> Middlewares) =>
     Middlewares.every((middleware) => middleware(req, res));
 
-void routehelpers(HandleMiddleware handleGuard, HandleReqRes handleRequest,
+void handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
     HttpRequest request) {
   if (handleGuard != null && handleGuard(request, request.response))
     handleRequest(request, request.response);

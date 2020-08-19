@@ -8,7 +8,7 @@ import '../helpers/set_default_response_headers.dart';
  * + Creates a new HttpServer 
  * + Binds it to the given host:post 
  * + Handles incoming requests*/
-void useHttpServer(String host, int port,
+Future<HttpServer> useHttpServer(String host, int port,
     {int backlog = 0, bool v60only = false, bool shared = false}) async {
   HttpServer server = await useCreateHttpServer(host, port,
       backlog: backlog, v60only: v60only, shared: shared);
@@ -16,5 +16,7 @@ void useHttpServer(String host, int port,
   setGzipAutoCompress(server);
   setDefaultResponseHeaders(server);
   useRequestHandler(server);
+
+  return server;
 }
 
