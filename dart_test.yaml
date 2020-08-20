@@ -1,0 +1,7 @@
+test_on: vm
+paths: [test]
+concurrency: 3
+
+on_os:
+  linux:
+    reporter: compact
