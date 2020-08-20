@@ -5,7 +5,7 @@ import 'package:geoffrey/hooks.dart'
     show useGet, useDelete, usePatch, usePost, useCustom, useHttpServer;
 
 void main() {
-  group('Test HTTP Routes', () {
+  group('Test Route Hooks With Server', () {
     String home = '/home';
     HttpServer server;
     Dio dio = Dio(BaseOptions(
