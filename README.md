@@ -28,7 +28,7 @@ we still want to give you some awesome extensions on your hands that help you co
 # Basic Usage
 
  
-In Geoffrey everything is a hook. There is no need to create objects, extend classes and annotate their properties etc. To create a simple http server all we need to do is use the **useHttpServer** hook. In general most of Geoffrey's hooks can be used literally anywhere in your code! We will cover the few exceptions at a later time.
+In Geoffrey everything is a hook. There is no need to create objects, extend classes and annotate their properties etc. In general most of Geoffrey's hooks can be used literally anywhere in your code! We will cover the few exceptions at a later time. To create a simple http server all we need to do is use the **useHttpServer** hook.
 
     useHttpServer('localhost', 8080);
 
@@ -39,7 +39,7 @@ Then add a route the server should handle and listen to.
       handleRequest: (req, res) => res.write('hallo'),
       handleGuard: (req, res) => true); // optional
 
-In the code snipped above, just like the hook identifier implies, **useGet** will create a new route **/home** with the **GET** method. Re-using **useGet** with the same route identifier will override the **GET** method for this particular route. **handleGuard** is optional and if provided **must!** return a boolean. If **handleGuard** returns **false** the server won't execute **handleRequest** and responds with HTTP Status Code 422 - unprocessableEntity. If **handleGuard** is provided it executes before **handleRequest** and thus guards the route from unauthorized access. Now let's add the **POST** method to our **/home** route.
+In the code snipped above, just like the hook identifier implies, **useGet** will create a new route **/home** with the **GET** method. Re-using **useGet** with the same route identifier will override the **GET** method for this particular route. **handleGuard** is optional and if provided **must!** return a boolean. If **handleGuard** returns **false** the server won't execute **handleRequest** and responds with HTTP Status Code 422 - unprocessable Entity. If **handleGuard** is provided it executes before **handleRequest** and thus guards the route from unauthorized access. Now let's add the **POST** method to our **/home** route.
   
 
     usePost(
@@ -55,9 +55,9 @@ Also worth noticing is that we omit the optional **handleGuard** on **usePost**.
       handleGuard: (req, res) => false,
       handleRequest: (req, res) => res.write('a wild magic rabbit appeared!'));
 
-**useCustom** enables the developer to add a custom **method**. It behaves the very same way like we have learned from **useGET** and **usePost**. The difference  is that we need to provide it one more argument **method**. By convention all HTTP method identifiers are capitalized. We can provide the **method** argument all in lowercase. It will be capitalized in the background for us. Also just like the convention with setting custom headers it is a good practise to append the custom method identifiers with a **x-** prefix just like in our example **x-magic-rabbit**. Pay attention to **handleGuard** and it's return value. Since it returns **false** we will receive the HTTP Status 422 when trying to route to **/home** with the custom method **X-MAGIC-RABBIT**.
+The **useCustom** hook enables the developer to add a custom **method**. It behaves the very same way **useGET** and **usePost** do. The difference is that we need to provide one more argument called **method**. By convention all HTTP method identifiers are capitalized. We can provide the **method** argument all in lowercase. It will be capitalized in the background for us. Also just like the convention with setting custom headers it is a good practise to append the custom method identifiers with a **x-** prefix just like in our example **x-magic-rabbit**. Please pay attention to **handleGuard** and it's return value. Since it returns **false** we will receive the HTTP Status 422 when trying to route to **/home** with the custom method **X-MAGIC-RABBIT**.
 
-That's it! Now run the server and visiting http://localhost:8080/home by using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! Just check out the repo and run:
+That's it! Now run the server and visit http://localhost:8080/home by using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! For this just check out the repo and run:
 
 > dart ./example/basic_usage.dart
 
