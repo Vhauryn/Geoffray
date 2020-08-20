@@ -28,7 +28,7 @@ we still want to give you some awesome extensions on your hands that help you co
 # Basic Usage
 
  
-In Geoffrey everything is a hook. There is no need to create objects, extend classes and annotate their properties etc. In general most of Geoffrey's hooks can be used literally anywhere in your code! We will cover the few exceptions at a later time. To create a simple http server all we need to do is use the **useHttpServer** hook.
+In Geoffrey everything is a hook. There is no need to create objects, extend classes and annotate their properties etc. In general most of Geoffrey's hooks can be used literally anywhere in your code! We will cover the few exceptions at a later time. By the way in this example the hooks don't need to be in any fixed order. To create a simple http server all we need to do is use the **useHttpServer** hook. 
 
     useHttpServer('localhost', 8080);
 
