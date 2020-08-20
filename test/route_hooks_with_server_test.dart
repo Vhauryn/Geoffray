@@ -1,3 +1,5 @@
+@TestOn('vm')
+
 import 'dart:io' show HttpServer;
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
