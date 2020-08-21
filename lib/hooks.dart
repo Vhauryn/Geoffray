@@ -16,9 +16,10 @@ export 'src/hooks/use_public_dir.dart';
 // server hooks
 export 'src/server_hooks/use_create_http_server.dart';
 export 'src/server_hooks/use_create_secure_http_server.dart';
-export 'src/server_hooks/use_certificates.dart';
+export 'src/server_hooks/use_security_context.dart';
 export 'src/server_hooks/use_request_handler.dart';
 export 'src/server_hooks/use_http_server.dart';
+export 'src/server_hooks/use_secure_http_server.dart';
 
 // route hooks
 export 'src/route_hooks/use_get.dart';

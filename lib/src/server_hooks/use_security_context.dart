@@ -4,13 +4,14 @@ import 'package:meta/meta.dart';
 import '../globals/state.dart';
 import '../globals/typedefs.dart';
 
-SecurityContext useCertificates(
+SecurityContext useSecurityContext(
     {@required String certificate,
     @required String privateKey,
     String privateKeyPassword}) {
+
   SecurityContext context = SecurityContext();
-  var crt = Platform.script.resolve('certificates/$certificate').toFilePath();
-  var key = Platform.script.resolve('certificates/$privateKey').toFilePath();
+  var crt = Platform.script.resolve('certs/$certificate').toFilePath();
+  var key = Platform.script.resolve('certs/$privateKey').toFilePath();
 
   context.useCertificateChain(crt);
   context.usePrivateKey(key, password: privateKeyPassword);
