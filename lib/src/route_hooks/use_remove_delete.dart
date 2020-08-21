@@ -1,6 +1,4 @@
 import '../helpers/remove_route.dart';
-import '../globals/state.dart';
-import '../globals/typedefs.dart' show DELETE, ROUTES;
+import '../globals/typedefs.dart' show DELETE;
 
-useRemoveDelete(String route) =>
-    state[ROUTES] = removeRoute(state[ROUTES], route, DELETE);
+useRemoveDelete(String route) => removeRoute(route, DELETE);

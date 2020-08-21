@@ -14,7 +14,13 @@ import 'package:geoffrey/hooks.dart'
         useDelete,
         useCustom,
         useContext,
-        useSubscribe;
+        useSubscribe,
+        useRemoveGet,
+        useRemovePut,
+        useRemovePost,
+        useRemovePatch,
+        useRemoveDelete,
+        useRemoveCustom;
 
 void main() {
   group('Test Managing Routes In State And Context', () {
@@ -68,6 +74,22 @@ void main() {
           handleRequest: (req, res) => res.write(customMethod));
       expect(routes[home][customMethod][REQUEST] != null, true);
       expect(routes[home][customMethod][GUARD] == null, true);
+    });
+
+    test('remove route and method from state/context', () {
+      String customMethod = 'X-MAGIC-RABBIT';
+      useRemoveCustom(home, customMethod);
+      expect(routes[home].containsKey(customMethod), false);
+      useRemoveGet(home);
+      expect(routes[home].containsKey(GET), false);
+      useRemovePut(home);
+      expect(routes[home].containsKey(PUT), false);
+      useRemovePost(home);
+      expect(routes[home].containsKey(POST), false);
+      useRemoveDelete(home);
+      expect(routes[home].containsKey(DELETE), false);
+      useRemovePatch(home);
+      expect(routes.containsKey(home), false);
     });
 
     test('state properties always references the context properties', () {
