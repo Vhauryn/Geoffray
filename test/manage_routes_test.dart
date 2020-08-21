@@ -1,5 +1,3 @@
-@TestOn('vm')
-
 import 'dart:collection';
 import 'package:test/test.dart';
 import 'package:geoffrey/src/globals/state.dart';
@@ -23,7 +21,7 @@ import 'package:geoffrey/hooks.dart'
         useRemoveCustom;
 
 void main() {
-  group('Test Managing Routes In State And Context', () {
+  group('Manage Routes', () {
     String home = '/home';
     HashMap<String, HashMap<String, Map<String, Function>>> routes =
         state[ROUTES];
