@@ -59,6 +59,6 @@ The **useCustom** hook enables the developer to add a custom **method**. It beha
 
 That's it! Now run the server and visit http://localhost:8080/home by using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! For this just check out the repo and run:
 
-> dart ./example/basic_usage.dart
+> dart ./example/use_http_server.dart
 
 ..to be continue
