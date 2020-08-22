@@ -11,26 +11,17 @@ void resolveRoutes(HttpRequest request,
   String path = request.uri.path;
   String method = request.method;
 
-  try {
-    if (routes.containsKey(path) && path != '/') {
-      if (routes[path].containsKey(method)) {
-        HandleMiddleware handleGuard = routes[path][method][GUARD];
-        HandleReqRes handleResponse = routes[path][method][REQUEST];
-        if (handleMiddleware(request, request.response)) {
-          handleRoute(handleGuard, handleResponse, request);
-        } else {
-          request.response.statusCode = HttpStatus.unprocessableEntity;
-        }
-      } else {
-        request.response.statusCode = HttpStatus.methodNotAllowed;
-      }
-    } else if (state[PUBLIC_DIR] != null) await serveHtmlContent(request);
-  } finally {
-    await request.response.close();
-  }
-
-  // handle msg for index.html not available
-  // serve default html and favicon?
-  // available routes/configs like in swagger?
-  //request.response.statusCode = HttpStatus.notFound;
+  if (routes.containsKey(path) && path != '/') {
+    if (routes[path].containsKey(method)) {
+      HandleMiddleware handleGuard = routes[path][method][GUARD];
+      HandleReqRes handleResponse = routes[path][method][REQUEST];
+      if (handleMiddleware(request, request.response))
+        handleRoute(handleGuard, handleResponse, request);
+      else
+        request.response.statusCode = HttpStatus.unprocessableEntity;
+    } else
+      request.response.statusCode = HttpStatus.methodNotAllowed;
+  } else if (state[PUBLIC_DIR] != null) await serveHtmlContent(request);
+  
+  await request.response.close();
 }
