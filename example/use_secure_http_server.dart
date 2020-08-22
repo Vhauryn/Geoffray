@@ -1,9 +1,9 @@
 import 'package:geoffrey/hooks.dart'
-    show useSecureHttpServer, useSecurityContext, useGet;
+    show useSecureHttpServer, useSecurityContext, SecurityContext, useGet;
 
 void main() {
-  final sctx =
-      useSecurityContext(certificate: 'cert.pem', privateKey: 'key.pem');
+  SecurityContext sctx =
+      useSecurityContext(cert: 'cert.pem', pkey: 'key.pem');
 
   // creates a new HttpServer, secure binds it to the given
   // host:port and handles incoming requests
