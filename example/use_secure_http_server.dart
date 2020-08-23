@@ -1,9 +1,8 @@
 import 'package:geoffrey/hooks.dart'
-    show useSecureHttpServer, useSecurityContext, useGet;
+    show useSecureHttpServer, useSecurityContext, SecurityContext, useGet;
 
 void main() {
-  final sctx =
-      useSecurityContext(certificate: 'cert.pem', privateKey: 'key.pem');
+  SecurityContext sctx = useSecurityContext(cert: 'cert.pem', pkey: 'key.pem');
 
   // creates a new HttpServer, secure binds it to the given
   // host:port and handles incoming requests
@@ -15,6 +14,6 @@ void main() {
   // handleGuard is optional and must return a boolean!
   useGet(
       route: '/home',
-      handleRequest: (req, res) => res.write('hallo "secure" world'),
+      handleRequest: (req, res) => res.write('<h1>hallo "secure" world</h1>'),
       handleGuard: (req, res) => true); // optional
 }

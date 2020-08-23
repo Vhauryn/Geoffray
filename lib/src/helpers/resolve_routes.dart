@@ -15,18 +15,17 @@ void resolveRoutes(HttpRequest request,
     if (routes[path].containsKey(method)) {
       HandleMiddleware handleGuard = routes[path][method][GUARD];
       HandleReqRes handleResponse = routes[path][method][REQUEST];
-      if (handleMiddleware(request, request.response, state[MIDDLEWARES]))
+      if (handleMiddleware(request, request.response))
         handleRoute(handleGuard, handleResponse, request);
-      else
+      else {
         request.response.statusCode = HttpStatus.unprocessableEntity;
-    } else
+        request.response.write('HTTP STATUS: 422 - Unprocessable Entity');
+      }
+    } else {
       request.response.statusCode = HttpStatus.methodNotAllowed;
+      request.response.write('HTTP STATUS: 405 - Method Not Allowed');
+    }
   } else if (state[PUBLIC_DIR] != null) await serveHtmlContent(request);
-
-  // handle msg for index.html not available
-  // serve default html and favicon?
-  // available routes/configs like in swagger?
-  //request.response.statusCode = HttpStatus.notFound;
-
+  
   await request.response.close();
 }
