@@ -5,10 +5,7 @@ import '../globals/state.dart';
 import '../globals/typedefs.dart';
 
 SecurityContext useSecurityContext(
-    {@required String cert,
-    @required String pkey,
-    String password}) {
-
+    {@required String cert, @required String pkey, String password}) {
   SecurityContext context = SecurityContext();
   var crt = Platform.script.resolve('certs/$cert').toFilePath();
   var key = Platform.script.resolve('certs/$pkey').toFilePath();

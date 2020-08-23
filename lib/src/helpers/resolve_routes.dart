@@ -15,7 +15,7 @@ void resolveRoutes(HttpRequest request,
     if (routes[path].containsKey(method)) {
       HandleMiddleware handleGuard = routes[path][method][GUARD];
       HandleReqRes handleResponse = routes[path][method][REQUEST];
-      if (handleMiddleware(request, request.response, state[MIDDLEWARES]))
+      if (handleMiddleware(request, request.response))
         handleRoute(handleGuard, handleResponse, request);
       else {
         request.response.statusCode = HttpStatus.unprocessableEntity;
