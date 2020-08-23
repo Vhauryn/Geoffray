@@ -7,5 +7,6 @@ Map<String, dynamic> state = {
   DEFAULT_RESPONSE_HEADERS: contexts[DEFAULT].defaultResponseHeaders,
   PUBLIC_DIR: contexts[DEFAULT].publicDir,
   CURRENT_CONTEXT: contexts[DEFAULT].ctxName,
-  HTTP_PROTOCOL: contexts[DEFAULT].httpProtocol
+  HTTP_PROTOCOL: contexts[DEFAULT].httpProtocol,
+  SHOULD_AUTO_CLOSE: contexts[DEFAULT].shouldAutoClose
 };
