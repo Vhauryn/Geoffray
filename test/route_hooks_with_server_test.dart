@@ -38,7 +38,7 @@ void main() {
 
     test('usePost returns HTTP STATUS 405', () async {
       try {
-        Response response = await dio.post(home);
+        await dio.post(home);
       } catch (e) {
         expect((e as DioError).response.toString(),
             equals('HTTP STATUS: 405 - Method Not Allowed'));
