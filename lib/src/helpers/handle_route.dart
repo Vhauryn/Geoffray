@@ -8,7 +8,7 @@ void handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
   else if (handleGuard(request, request.response))
     handleRequest(request, request.response);
   else {
-    request.response.write('HTTP STATUS: 422 - Unprocessable Entity');
     request.response.statusCode = HttpStatus.unprocessableEntity;
+    request.response.write('HTTP STATUS: 422 - Unprocessable Entity');
   }
 }

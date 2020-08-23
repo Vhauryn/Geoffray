@@ -26,6 +26,6 @@ void resolveRoutes(HttpRequest request,
       request.response.write('HTTP STATUS: 405 - Method Not Allowed');
     }
   } else if (state[PUBLIC_DIR] != null) await serveHtmlContent(request);
-
+  
   await request.response.close();
 }
