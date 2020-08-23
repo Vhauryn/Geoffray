@@ -53,8 +53,7 @@ In the code snipped above, just like the hook identifier implies, **useGet** wil
       route: '/home',
       handleRequest: (req, res) => res.write('world'));
 
-Notice how we provide the same route identifier to **usePost**. Since the route **/home** already exists only the **POST** method is being added. Now the server handles both methods **GET** and **POST** on route **/home**.
-Also worth noticing is that we omit the optional **handleGuard** on **usePost**. Now let's add one last custom method to route **/home** by using the **useCustom** hook.
+Notice how we provide the same route identifier to **usePost**. Since the route **/home** already exists the **POST** method will be appended to it. Now the server handles both methods **GET** and **POST** on route **/home**. Also worth noticing is that we omit the optional **handleGuard** on **usePost**. Let's add one last custom method to route **/home** by using the **useCustom** hook.
 
     useCustom(
       route: '/home',
@@ -64,10 +63,10 @@ Also worth noticing is that we omit the optional **handleGuard** on **usePost**.
 
 The **useCustom** hook enables the developer to add a custom **method**. It behaves the very same way **useGET** and **usePost** do. The difference is that we need to provide one more argument called **method**. By convention all HTTP method identifiers are capitalized. We can provide the **method** argument all in lowercase. It will be capitalized in the background for us. Also just like the convention with setting custom headers it is a good practise to append the custom method identifiers with a **x-** prefix just like in our example **x-magic-rabbit**. Please pay attention to **handleGuard** and it's return value. Since it returns **false** we will receive the HTTP Status 422 when trying to route to **/home** with the custom method **X-MAGIC-RABBIT**.
 
-That's it! Visit http://localhost:8080/home by using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! 
-
-For this just check out the repo and run:
+That's it! If interested checkout the repo and give it a go. You can run this example by invoking
 
 > dart ./example/use_http_server.dart
+
+Visit localhost:8080/home using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! 
 
 ..to be continue
