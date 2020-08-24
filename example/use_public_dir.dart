@@ -4,10 +4,7 @@ import 'package:geoffrey/hooks.dart'
 // visit http://localhost:8080/switch to toggle the context
 
 void main() {
-  var ctx1 = useContext('default');
-  useSubscribe(ctx1);
-
-  // this public dir will be bound to the subscribed context
+  useSubscribe(useContext('default'));
   usePublicDir('./example/mocks_data_assets/web-default');
 
   useGet(
@@ -15,20 +12,18 @@ void main() {
       handleRequest: (req, res) {
         useSubscribe(useContext('secret'));
         res.write('switched to secret');
-      },
-      handleGuard: (req, res) => true);
+      });
 
-  var ctx2 = useContext('secret');
-  useSubscribe(ctx2);
-
+  useSubscribe(useContext('secret'));
   usePublicDir('./example/mocks_data_assets/web-secret');
+
   useGet(
       route: '/switch',
       handleRequest: (req, res) {
         useSubscribe(useContext('default'));
         res.write('switched to default');
-      },
-      handleGuard: (req, res) => true);
-
+      });
+      
+  useSubscribe(useContext('default'));
   useHttpServer('localhost', 8080);
 }

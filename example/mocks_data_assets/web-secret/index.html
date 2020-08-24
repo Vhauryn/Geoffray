@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Secret Context</title>
+    <link href="css/secret_style.css" rel="stylesheet"/>
 </head>
+
 <body>
-    SECRET
-    <img src="img/turtle.jpg" alt="not found" srcset="">
-    <script async src="js/log.js"></script>
+    <div data-container>
+        <h1>Welcome to the secret context!</h1>
+        <img src="img/turtle.jpg" alt="not found" srcset="">
+        <p id="msg"></p>
+        <button onclick="switchContext()">Switch Context</button>
+    </div>
+    <script async src="js/secret_app.js"></script>
 </body>
+
 </html>
