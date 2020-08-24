@@ -1,9 +1,8 @@
 import 'dart:io';
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
+import '../globals/context.dart';
 
 Future<dynamic> mapRootPathToIndexHTml(HttpRequest req) async {
-  var index = File('${state[PUBLIC_DIR]}/index.html');
+  var index = File('${State.publicDir}/index.html');
 
   if (await index.exists()) {
     req.response.headers.contentType = ContentType.html;

@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
-import 'package:geoffrey/src/globals/state.dart';
+import 'package:geoffrey/src/globals/context.dart';
 import 'package:geoffrey/src/globals/typedefs.dart';
 import 'package:geoffrey/hooks.dart'
     show useMiddleware, useSubscribe, useContext;
 
 void main() {
   group('Manage Middlewares', () {
-    Set<HandleMiddleware> middlewares = state[MIDDLEWARES];
+    Set<HandleMiddleware> middlewares = State.middlewares;
 
     test('useMiddleware adds middlewares', () {
       expect(middlewares.isEmpty, true);
@@ -18,9 +18,9 @@ void main() {
 
     test('switching the context useMiddleware behaves as expected', () {
       useSubscribe(useContext('other'));
-      expect(middlewares == state[MIDDLEWARES], false);
+      expect(middlewares == State.middlewares, false);
       expect(middlewares.length, equals(2));
-      expect(state[MIDDLEWARES].length, equals(0));
+      expect(State.middlewares.length, equals(0));
     });
   });
 }

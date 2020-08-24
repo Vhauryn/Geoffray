@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'package:test/test.dart';
-import 'package:geoffrey/src/globals/state.dart';
 import 'package:geoffrey/src/globals/context.dart';
 import 'package:geoffrey/src/globals/typedefs.dart';
 import 'package:geoffrey/hooks.dart'
@@ -24,7 +23,7 @@ void main() {
   group('Manage Routes', () {
     String home = '/home';
     HashMap<String, HashMap<String, Map<String, Function>>> routes =
-        state[ROUTES];
+        State.routes;
 
     test('useGet adds a route and the GET method to state/context', () {
       useGet(route: home, handleRequest: (req, res) => res.write(GET));
@@ -92,14 +91,14 @@ void main() {
 
     test('state properties always references the context properties', () {
       // routes object in state is the same routes object in context
-      expect(routes == contexts[state[CURRENT_CONTEXT]].routes, true);
+      expect(routes == State.routes, true);
       // subscribing the state to a new context
       useSubscribe(useContext('other'));
       // routes object of the previous state is not the same routes object in the new context
-      expect(routes == contexts[state[CURRENT_CONTEXT]].routes, false);
+      expect(routes == State.routes, false);
       // since state always references the subscribed context the routes object
       // of the previous state is not the same route object in the new state.
-      expect(routes == state[ROUTES], false);
+      expect(routes == State.routes, false);
     });
   });
 }

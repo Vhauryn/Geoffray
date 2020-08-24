@@ -1,8 +1,7 @@
 import 'dart:io';
 import '../helpers/set_default_response_headers.dart';
 import '../helpers/set_gzip_auto_compress.dart';
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
+
 import '../globals/context.dart';
 import 'use_create_secure_http_server.dart';
 import 'use_request_handler.dart';
@@ -26,10 +25,7 @@ Future<HttpServer> useSecureHttpServer(
   setDefaultResponseHeaders(server);
   useRequestHandler(server);
 
-  if (autoClose != null) {
-    state[SHOULD_AUTO_CLOSE] = autoClose;
-    contexts[state[CURRENT_CONTEXT]].shouldAutoClose = autoClose;
-  }
+  if (autoClose != null) State.shouldAutoClose = autoClose;
 
   return server;
 }

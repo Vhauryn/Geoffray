@@ -1,9 +1,8 @@
 import 'dart:io';
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
+import '../globals/context.dart';
 
 setDefaultResponseHeaders(HttpServer server) {
-  if (state[DEFAULT_RESPONSE_HEADERS].isNotEmpty)
-    state[DEFAULT_RESPONSE_HEADERS]
+  if (State.defaultResponseHeaders.isNotEmpty)
+    State.defaultResponseHeaders
         .forEach((key, value) => server.defaultResponseHeaders.add(key, value));
 }

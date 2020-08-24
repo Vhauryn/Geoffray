@@ -1,10 +1,9 @@
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
+import '../globals/context.dart';
 
 void removeRoute(String route, String method) {
-  if (state[ROUTES].containsKey(route)) {
-    state[ROUTES][route].length == 1
-        ? state[ROUTES].remove(route)
-        : state[ROUTES][route].remove(method);
+  if (State.routes.containsKey(route)) {
+    State.routes[route].length == 1
+        ? State.routes.remove(route)
+        : State.routes[route].remove(method);
   }
 }

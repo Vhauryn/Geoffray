@@ -1,8 +1,7 @@
 import 'dart:io';
-import '../globals/typedefs.dart';
-import '../globals/state.dart';
+import '../globals/context.dart';
 
 bool handleMiddleware(HttpRequest req, HttpResponse res) =>
-    state[MIDDLEWARES].isNotEmpty
-        ? state[MIDDLEWARES].every((middleware) => middleware(req, res))
+    State.middlewares.isNotEmpty
+        ? State.middlewares.every((middleware) => middleware(req, res))
         : true;

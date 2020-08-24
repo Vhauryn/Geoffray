@@ -1,6 +1,5 @@
 import 'dart:io';
-import '../globals/state.dart';
-import '../globals/typedefs.dart';
+import '../globals/context.dart';
 
 void useMiddleware(bool Function(HttpRequest, HttpResponse) func) =>
-    state[MIDDLEWARES].add(func);
+    State.middlewares.add(func);

@@ -1,8 +1,8 @@
 import 'dart:collection';
+import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
-void addRoute(HashMap<String, HashMap<String, Map<String, Function>>> routes,
-    String method, String path, HandleReqRes hr,
+void addRoute(String method, String path, HandleReqRes hr,
     [HandleMiddleware hg]) {
   if (path == '/')
     throw 'The route "/" is used for serving html/files and thus can\'t be set!';
@@ -12,7 +12,7 @@ void addRoute(HashMap<String, HashMap<String, Map<String, Function>>> routes,
         method: {REQUEST: hr, GUARD: hg}
       });
 
-  routes.containsKey(path)
-      ? routes[path].putIfAbsent(method, putMethod)
-      : routes.putIfAbsent(path, putRoute);
+  State.routes.containsKey(path)
+      ? State.routes[path].putIfAbsent(method, putMethod)
+      : State.routes.putIfAbsent(path, putRoute);
 }

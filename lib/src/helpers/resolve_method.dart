@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'handle_route.dart';
 import 'handle_middleware.dart';
-import '../globals/state.dart';
+import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
 void resolveMethod(String path, String method, HttpRequest request) {
-  if (state[ROUTES][path].containsKey(method)) {
-    HandleMiddleware handleGuard = state[ROUTES][path][method][GUARD];
-    HandleReqRes handleResponse = state[ROUTES][path][method][REQUEST];
+  if (State.routes[path].containsKey(method)) {
+    HandleMiddleware handleGuard = State.routes[path][method][GUARD];
+    HandleReqRes handleResponse = State.routes[path][method][REQUEST];
     if (handleMiddleware(request, request.response))
       handleRoute(handleGuard, handleResponse, request);
     else {
