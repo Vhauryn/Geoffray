@@ -43,10 +43,13 @@ Then add a route the server should handle and listen to.
 
     useGet(
       route: '/home',
-      handleRequest: (req, res) => res.write('hallo'),
-      handleGuard: (req, res) => true); // optional
+      handleRequest: (req, res) => res.write('hello'),
+      handleGuard: (req, res) async => await Future.delayed(
+            Duration(seconds: 2),
+            () => true,
+          )); // optional
 
-In the code snipped above, just like the hook identifier implies, **useGet** will create a new route **/home** with the **GET** method. Re-using **useGet** with the same route identifier will override the **GET** method for this particular route. **handleGuard** is optional and if provided **must!** return a boolean. If **handleGuard** returns **false** the server won't execute **handleRequest** and responds with HTTP Status Code 422 - unprocessable Entity. If **handleGuard** is provided it executes before **handleRequest** and thus guards the route from unauthorized access. Now let's add the **POST** method to our **/home** route.
+In the code snipped above, just like the hook identifier implies, **useGet** will create a new route **/home** with the **GET** method. Re-using **useGet**, **usePost** etc. with the same route identifier will override the method for this particular route. Both **handleRequest** and **handleGuard** can be asynchronous. **handleGuard** is optional and if provided **must!** return a boolean. If **handleGuard** returns **false** the server won't execute **handleRequest** and responds with HTTP Status Code 422 - unprocessable Entity. If **handleGuard** is provided it executes before **handleRequest** and thus guards the route from unauthorized access. Now let's add the **POST** method to our **/home** route.
   
 
     usePost(

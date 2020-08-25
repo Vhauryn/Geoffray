@@ -5,7 +5,7 @@ Future<void> handleRoute(HandleMiddleware handleGuard, HandleReqRes handleReques
     HttpRequest request) async {
   if (handleGuard == null)
     await handleRequest(request, request.response);
-  else if (handleGuard(request, request.response))
+  else if (await handleGuard(request, request.response))
     await handleRequest(request, request.response);
   else {
     request.response.statusCode = HttpStatus.unprocessableEntity;

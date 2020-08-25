@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:collection';
+import 'dart:async';
 import '../globals/typedefs.dart';
 
 class Context {
@@ -7,7 +8,7 @@ class Context {
   String publicDir;
   bool shouldAutoClose = true;
   String httpProtocol = 'http';
-  Set<bool Function(HttpRequest, HttpResponse)> middlewares = Set();
+  Set<FutureOr<bool> Function(HttpRequest, HttpResponse)> middlewares = Set();
   HashMap<String, HashMap<String, Map<String, Function>>> routes = HashMap();
   Map<String, Object> defaultResponseHeaders = Map();
   Context(this.ctxName);

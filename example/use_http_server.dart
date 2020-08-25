@@ -1,6 +1,5 @@
 import 'package:geoffrey/hooks.dart'
     show useHttpServer, useGet, usePost, useCustom;
-import 'dart:io';
 
 void main() {
   // creates a new HttpServer, binds it to the given
@@ -13,9 +12,11 @@ void main() {
   // handleGuard is optional and must return a boolean!
   useGet(
       route: '/home',
-      handleRequest: (req, res) async =>
-          res.add(await File('README.md').readAsBytes()),
-      handleGuard: (req, res) => true); // optional
+      handleRequest: (req, res) => res.write('hello'),
+      handleGuard: (req, res) async => await Future.delayed(
+            Duration(seconds: 2),
+            () => true,
+          )); // optional
 
   // here we add an additional post method to the route /home
   usePost(route: '/home', handleRequest: (req, res) => res.write('world'));
