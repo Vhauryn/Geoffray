@@ -1,8 +1,6 @@
 import 'package:geoffrey/hooks.dart'
     show useHttpServer, useGet, usePublicDir, useContext, useSubscribe;
 
-// visit http://localhost:8080/switch to toggle the context
-
 void main() {
   useSubscribe(useContext('default'));
   usePublicDir('./example/mocks_data_assets/web-default');
@@ -23,7 +21,7 @@ void main() {
         useSubscribe(useContext('default'));
         res.write('switched to default');
       });
-      
+
   useSubscribe(useContext('default'));
   useHttpServer('localhost', 8080);
 }
