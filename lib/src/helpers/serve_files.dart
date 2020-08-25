@@ -12,5 +12,5 @@ Future<dynamic> serveFiles(HttpRequest req) async {
   final mimeType = mime(fileName) ?? 'text/plain; charset=UTF-8';
 
   req.response.headers.add('content-type', mimeType);
-  return await req.response.addStream(index.openRead());
+  return req.response.addStream(index.openRead());
 }

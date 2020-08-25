@@ -6,6 +6,6 @@ Future<dynamic> mapRootPathToIndexHTml(HttpRequest req) async {
 
   if (await index.exists()) {
     req.response.headers.contentType = ContentType.html;
-    return await req.response.addStream(index.openRead());
+    return req.response.addStream(index.openRead());
   }
 }
