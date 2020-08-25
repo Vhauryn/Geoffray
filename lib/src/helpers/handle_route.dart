@@ -1,12 +1,12 @@
 import 'dart:io';
 import '../globals/typedefs.dart';
 
-void handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
-    HttpRequest request) {
+Future<void> handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
+    HttpRequest request) async {
   if (handleGuard == null)
-    handleRequest(request, request.response);
+    await handleRequest(request, request.response);
   else if (handleGuard(request, request.response))
-    handleRequest(request, request.response);
+    await handleRequest(request, request.response);
   else {
     request.response.statusCode = HttpStatus.unprocessableEntity;
     request.response.write('HTTP STATUS: 422 - Unprocessable Entity');

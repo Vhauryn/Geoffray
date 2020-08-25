@@ -1,7 +1,7 @@
 import 'dart:io';
 
 // Optional params do not work yet : Dart 2.9.0
-typedef HandleReqRes = void Function(HttpRequest req, HttpResponse res);
+typedef HandleReqRes = Function(HttpRequest req, HttpResponse res);
 typedef HandleMiddleware = bool Function(HttpRequest req, HttpResponse res);
 
 // Enum and map produce an overhead and do not work as desired.

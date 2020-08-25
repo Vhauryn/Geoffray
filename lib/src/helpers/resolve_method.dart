@@ -4,12 +4,12 @@ import 'handle_middleware.dart';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
-void resolveMethod(String path, String method, HttpRequest request) {
+Future<void> resolveMethod(String path, String method, HttpRequest request) async {
   if (State.routes[path].containsKey(method)) {
     HandleMiddleware handleGuard = State.routes[path][method][GUARD];
     HandleReqRes handleResponse = State.routes[path][method][REQUEST];
     if (handleMiddleware(request, request.response))
-      handleRoute(handleGuard, handleResponse, request);
+      await handleRoute(handleGuard, handleResponse, request);
     else {
       request.response.statusCode = HttpStatus.unprocessableEntity;
       request.response.write('HTTP STATUS: 422 - Unprocessable Entity');
