@@ -3,5 +3,5 @@ import '../globals/context.dart';
 
 void usePublicDir(String dir) {
   Directory(dir).createSync(recursive: true);
-  State.publicDir = dir;
+  CONTEXT.publicDir = dir;
 }

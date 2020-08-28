@@ -14,9 +14,9 @@ class Context {
   Context(this.ctxName);
 }
 
-// We always save the reference to the current context in State.
+// We always save the reference to the current context in CONTEXT.
 // Here initially the default context.
-Context State = contexts[DEFAULT];
+Context CONTEXT = contexts[DEFAULT];
 
 // A simple map that holds all our contexts.
 // Initially must! hold the default context.

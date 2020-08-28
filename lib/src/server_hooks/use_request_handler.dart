@@ -4,7 +4,7 @@ import '../helpers/resolve_routes.dart';
 
 /// + Handles incoming requests */
 void useRequestHandler(HttpServer server) async {
-  String protocol = State.httpProtocol;
+  String protocol = CONTEXT.httpProtocol;
   print('serving on $protocol://${server.address.host}:${server.port}');
   server.listen(resolveRoutes);
 }

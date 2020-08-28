@@ -12,7 +12,7 @@ SecurityContext useSecurityContext(
   context.useCertificateChain(crt);
   context.usePrivateKey(key, password: password);
 
-  State.httpProtocol = 'https';
+  CONTEXT.httpProtocol = 'https';
 
   return context;
 }

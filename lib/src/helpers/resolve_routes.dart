@@ -7,14 +7,14 @@ Future<void> resolveRoutes(HttpRequest request) async {
   String path = request.uri.path;
   String method = request.method;
 
-  if (State.routes.containsKey(path))
+  if (CONTEXT.routes.containsKey(path))
     await resolveMethod(path, method, request);
-  else if (State.publicDir != null)
+  else if (CONTEXT.publicDir != null)
     await serveHtmlContent(request);
   else {
     request.response.statusCode = HttpStatus.notFound;
     request.response.write('HTTP STATUS: 404 - Not Found');
   }
 
-  if (State.shouldAutoClose) await request.response.close();
+  if (CONTEXT.shouldAutoClose) await request.response.close();
 }

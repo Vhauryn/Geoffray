@@ -23,7 +23,7 @@ void main() {
   group('Manage Routes', () {
     String home = '/home';
     HashMap<String, HashMap<String, Map<String, Function>>> routes =
-        State.routes;
+        CONTEXT.routes;
 
     test('useGet adds a route and the GET method to state/context', () {
       useGet(route: home, handleRequest: (req, res) => res.write(GET));
@@ -91,14 +91,14 @@ void main() {
 
     test('state properties always references the context properties', () {
       // routes object in state is the same routes object in context
-      expect(routes == State.routes, true);
+      expect(routes == CONTEXT.routes, true);
       // subscribing the state to a new context
       useSubscribe(useContext('other'));
       // routes object of the previous state is not the same routes object in the new context
-      expect(routes == State.routes, false);
+      expect(routes == CONTEXT.routes, false);
       // since state always references the subscribed context the routes object
-      // of the previous state is not the same route object in the new state.
-      expect(routes == State.routes, false);
+      // of the previous state is not the same route object in the new CONTEXT.
+      expect(routes == CONTEXT.routes, false);
     });
   });
 }

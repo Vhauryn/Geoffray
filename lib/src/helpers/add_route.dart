@@ -12,7 +12,7 @@ void addRoute(String method, String path, HandleReqRes hr,
         method: {REQUEST: hr, GUARD: hg}
       });
 
-  State.routes.containsKey(path)
-      ? State.routes[path].putIfAbsent(method, putMethod)
-      : State.routes.putIfAbsent(path, putRoute);
+  CONTEXT.routes.containsKey(path)
+      ? CONTEXT.routes[path].putIfAbsent(method, putMethod)
+      : CONTEXT.routes.putIfAbsent(path, putRoute);
 }

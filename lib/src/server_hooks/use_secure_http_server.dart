@@ -25,7 +25,7 @@ Future<HttpServer> useSecureHttpServer(
   setDefaultResponseHeaders(server);
   useRequestHandler(server);
 
-  if (autoClose != null) State.shouldAutoClose = autoClose;
+  if (autoClose != null) CONTEXT.shouldAutoClose = autoClose;
 
   return server;
 }

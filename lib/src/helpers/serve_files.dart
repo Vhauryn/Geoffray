@@ -4,7 +4,7 @@ import '../globals/context.dart';
 
 Future<dynamic> serveFiles(HttpRequest req) async {
   final fileName = req.uri.pathSegments.last;
-  final index = File('${State.publicDir}/${req.uri.path}');
+  final index = File('${CONTEXT.publicDir}/${req.uri.path}');
 
   if (!await index.exists())
     return req.response.statusCode = HttpStatus.notFound;

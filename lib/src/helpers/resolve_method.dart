@@ -5,9 +5,9 @@ import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
 Future<void> resolveMethod(String path, String method, HttpRequest request) async {
-  if (State.routes[path].containsKey(method)) {
-    HandleMiddleware handleGuard = State.routes[path][method][GUARD];
-    HandleReqRes handleResponse = State.routes[path][method][REQUEST];
+  if (CONTEXT.routes[path].containsKey(method)) {
+    HandleMiddleware handleGuard = CONTEXT.routes[path][method][GUARD];
+    HandleReqRes handleResponse = CONTEXT.routes[path][method][REQUEST];
     if (await handleMiddleware(request, request.response))
       await handleRoute(handleGuard, handleResponse, request);
     else {
