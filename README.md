@@ -1,22 +1,27 @@
-# Geoffrey
+# Table of Contents
 
-Geoffrey is a modern open source HTTP framework inspired by JavaScript modules and react-/vueJS hooks. 
-It's focus is low level code abstraction, simplicity, modularity, safety and performance.
+1. [What is Geoffrey](#1-what-is-geoffrey)
+2. [Install Geoffrey](#2-install-geoffrey)
+3. [Basic Usage](#3-basic-usage)
+4. [Hooks](#4-hooks)
 
-## Why Geoffrey?
+    4.1 [UseHttpServer](#41-usehttpserver)
 
-While Dart has aged well in the last few years it is yet still one of the newer technologies out there.
-Compared to the other Dart HTTP frameworks Geoffrey is focusing to be more lightweight, customizable and highly modular. In fact Geoffrey is so modular that you can switch the whole server context on the fly! The server context includes all the routing, middleware, file serving information and so on. You can have as many contexts as you want and switch between them as often as you want without shutting down the server. Imagine you have a situation where you want to remove or create a totally new route depending if someone is logged in or even switch the whole Web-Application. Why ever you would want it you can easily achieve it with Geoffrey! 
+---
 
-## Install Geoffrey
+### 1. What is Geoffrey?
+
+Geoffrey is a modern open source HTTP framework inspired by JavaScript modules and react-/vueJS hooks. It's focus is low level code abstraction, simplicity, modularity, safety and performance. While Dart has aged well in the last few years it is yet still one of the newer technologies out there. Compared to the other Dart HTTP frameworks Geoffrey is focusing to be more lightweight, customizable and highly modular. In fact Geoffrey is so modular that you can switch the whole server context on the fly! The server context includes all the routing, middleware, file serving information and so on. You can have as many contexts as you want and switch between them as often as you want without shutting down the server. Imagine you have a situation where you want to remove or create a totally new route depending if someone is logged in or even switch the whole Web-Application. Why ever you would want it you can easily achieve it with Geoffrey! 
+
+## 2. Install Geoffrey
 
 Simply add **geoffey:version** to your pubspec.yaml (**not yet available!!!**)
 Then run **pub get** or if flutter sdk is installed run **flutter pub get**.
 
-## Recommended VSCode Extensions
-
 While you don't need any additional tools or plugins to work with Geoffrey, 
 we still want to give you some awesome extensions on your hands that help you code.
+
+**VS Code**
 
 * Dart (Official VSCode plugin for Dart)
 * Bracket Pair Colorizer 2
@@ -25,9 +30,8 @@ we still want to give you some awesome extensions on your hands that help you co
 * YAML
 * Make Hide
 
-# Basic Usage
+## 3. Basic Usage
 
- 
 In Geoffrey everything is a hook. There is no need to create objects, extend classes, annotate their properties etc. In general most of Geoffrey's hooks can be used literally anywhere in your code! We will cover the few exceptions at a later time. By the way in this example the hooks don't need to be in any fixed order. 
 
 Now then let's import some hooks.
@@ -72,4 +76,10 @@ That's it! If interested checkout the repo and give it a go. You can run this ex
 
 Visit localhost:8080/home using the methods **GET**, **POST** and **X-MAGIC-RABBIT**! 
 
-..to be continue
+## 4. Hooks
+
+#### 4.1 useHttpServer
+
+fdsfdsfdsfdsf
+dsfdsfdsfdsf
+sdfdsfdsf
