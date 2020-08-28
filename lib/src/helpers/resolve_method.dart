@@ -8,7 +8,7 @@ Future<void> resolveMethod(String path, String method, HttpRequest request) asyn
   if (State.routes[path].containsKey(method)) {
     HandleMiddleware handleGuard = State.routes[path][method][GUARD];
     HandleReqRes handleResponse = State.routes[path][method][REQUEST];
-    if (handleMiddleware(request, request.response))
+    if (await handleMiddleware(request, request.response))
       await handleRoute(handleGuard, handleResponse, request);
     else {
       request.response.statusCode = HttpStatus.unprocessableEntity;
