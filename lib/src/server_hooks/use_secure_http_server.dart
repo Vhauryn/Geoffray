@@ -17,7 +17,7 @@ Future<HttpServer> useSecureHttpServer(
     {int backlog = 0,
     bool v60only = false,
     bool shared = false,
-    bool autoClose}) async {
+    bool autoClose = true}) async {
   HttpServer server = await useCreateSecureHttpServer(host, port, sctx,
       backlog: backlog, v60only: v60only, shared: shared);
 

@@ -15,7 +15,7 @@ Future<HttpServer> useHttpServer(String host, int port,
     {int backlog = 0,
     bool v60only = false,
     bool shared = false,
-    bool autoClose}) async {
+    bool autoClose = true}) async {
   HttpServer server = await useCreateHttpServer(host, port,
       backlog: backlog, v60only: v60only, shared: shared);
 

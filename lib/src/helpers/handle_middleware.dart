@@ -3,10 +3,11 @@ import 'dart:async';
 import '../globals/context.dart';
 
 FutureOr<bool> handleMiddleware(HttpRequest req, HttpResponse res) async {
-  FutureOr<bool> result = false;
+  FutureOr<bool> result = true;
 
-  await for (var mid in Stream.fromIterable(State.middlewares))
-    result = await mid(req, res);
+  if (State.middlewares.isNotEmpty)
+    await for (var mid in Stream.fromIterable(State.middlewares))
+      result = await mid(req, res);
 
   return result;
 }
