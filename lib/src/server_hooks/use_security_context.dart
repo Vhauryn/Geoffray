@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:geoffrey/src/globals/context.dart';
 import 'package:meta/meta.dart';
-import '../globals/context.dart';
 
 SecurityContext useSecurityContext(
     {@required String cert, @required String pkey, String password}) {
@@ -11,8 +9,6 @@ SecurityContext useSecurityContext(
 
   context.useCertificateChain(crt);
   context.usePrivateKey(key, password: password);
-
-  CONTEXT.httpProtocol = 'https';
 
   return context;
 }
