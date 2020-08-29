@@ -2,10 +2,19 @@ import 'dart:async';
 import 'dart:io';
 
 // Optional params do not work yet : Dart 2.9.0
-typedef HandleReqRes = FutureOr<void> Function(HttpRequest req, HttpResponse res);
-typedef HandleMiddleware = FutureOr<bool> Function(HttpRequest req, HttpResponse res);
+typedef HandleReqRes = FutureOr<void> Function(
+    HttpRequest req, HttpResponse res);
+typedef HandleMiddleware = FutureOr<bool> Function(
+    HttpRequest req, HttpResponse res);
 typedef Route = void Function(String method, String path, HandleReqRes reqres,
     HandleMiddleware middleware);
+
+const Map<String, Object> DEFAULT_RESPONSE_HEADERS = {
+  'Content-Type': 'text/plain; charset=utf-8',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'X-Content-Type-Options': 'nosniff',
+  'X-XSS-Protection': '1; mode=block'
+};
 
 // Enum and map produce an overhead and do not work as desired.
 // For map only map['GET'] works but not map.GET so we use constants
