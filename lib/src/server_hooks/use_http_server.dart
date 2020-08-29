@@ -1,5 +1,4 @@
 import 'dart:io';
-import '../helpers/set_default_response_headers.dart';
 import '../helpers/set_gzip_auto_compress.dart';
 import '../globals/context.dart';
 import 'use_create_http_server.dart';
@@ -19,11 +18,11 @@ Future<HttpServer> useHttpServer(String host, int port,
   HttpServer server = await useCreateHttpServer(host, port,
       backlog: backlog, v60only: v60only, shared: shared);
 
-  setGzipAutoCompress(server);
-  setDefaultResponseHeaders(server);
-  useRequestHandler(server);
+  CONTEXT.server = server;
+  CONTEXT.shouldAutoClose = autoClose;
 
-  if (autoClose != null) CONTEXT.shouldAutoClose = autoClose;
+  setGzipAutoCompress(server);
+  useRequestHandler(server);
 
   return server;
 }

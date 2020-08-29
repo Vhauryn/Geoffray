@@ -17,4 +17,5 @@ const String PUT = 'PUT',
     DELETE = 'DELETE',
     REQUEST = 'REQUEST',
     GUARD = 'GUARD',
-    DEFAULT = 'DEFAULT';
+    DEFAULT = 'DEFAULT',
+    HTTPS = 'https';

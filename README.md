@@ -121,14 +121,19 @@ The **useSecureHttpServer** hook essentially does the same thing the **useHttpSe
 
 The **SecurityContext** is part of the **dart:io** package. You can either use the api or simply invoke the [useSecurityContext](#23-usesecuritycontext) hook to create a security context.
 
+Example
+
     HttpServer server = await useSecureHttpServer('localhost', 443, sctx);
 
 ## 2.3. UseSecurityContext
 
 The **UseSecurityContext** creates a SecurityContext by simply setting the certificate, privateKey and the password. For a more advanced usage we recommend to use the **SecurityContext** from the **dart:io** api.
 
-    SecurityContext useSecurityContext(
-    { @required String cert, @required String pkey, String password })
+    SecurityContext useSecurityContext({ 
+        @required String cert, 
+        @required String pkey, 
+        String password 
+    })
 
 Example
 

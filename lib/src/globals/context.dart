@@ -3,10 +3,10 @@ import 'dart:collection';
 import 'dart:async';
 import '../globals/typedefs.dart';
 
-
 class Context {
   String ctxName;
   String publicDir;
+  HttpServer server;
   bool shouldAutoClose = true;
   String httpProtocol = 'http';
   Set<FutureOr<bool> Function(HttpRequest, HttpResponse)> middlewares = Set();
