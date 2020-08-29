@@ -12,7 +12,7 @@ Simply add **geoffey** to your pubspec.yaml (**not yet available!!!**)
 
 Then run **pub get** or if flutter sdk is installed run **flutter pub get** to fetch the dependencies. 
 
-# Basic Usage - Quick And Dirty
+# Hooks Basic Usage
 
 First let's import some hooks.
 
@@ -44,4 +44,4 @@ You can run this example by invoking
 
     dart ./example/use_http_server.dart
 
-to be continue
+[Check out the Wiki](https://github.com/ehildt/Geoffrey/wiki/Hooks-Basics)
