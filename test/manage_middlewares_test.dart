@@ -1,8 +1,7 @@
 import 'package:test/test.dart';
 import 'package:geoffrey/src/globals/context.dart';
 import 'package:geoffrey/src/globals/typedefs.dart';
-import 'package:geoffrey/hooks.dart'
-    show useMiddleware, useSubscribe, useContext;
+import 'package:geoffrey/hooks.dart' show useMiddleware, useContext;
 
 void main() {
   group('Manage Middlewares', () {
@@ -17,7 +16,7 @@ void main() {
     });
 
     test('switching the context useMiddleware behaves as expected', () {
-      useSubscribe(useContext('other'));
+      useContext('other');
       expect(middlewares == CONTEXT.middlewares, false);
       expect(middlewares.length, equals(2));
       expect(CONTEXT.middlewares.length, equals(0));

@@ -1,5 +1,5 @@
 import 'package:geoffrey/hooks.dart'
-    show useHttpServer, useGet, useContext, useSubscribe;
+    show useHttpServer, useGet, useContext;
 
 void main() {
   // If no context name is provided it returns the default context.
@@ -8,28 +8,25 @@ void main() {
   useContext('default'); // Same as useContext()
   useContext('secret');
 
-  // Binds the hooks to the subscribed context, here the defaultContext
-  useSubscribe(useContext());
-
   // This route is recorded in the defaultContext
   // When visited switches to the secret context
   useGet(
       route: '/home',
       handleRequest: (req, res) {
-        useSubscribe(useContext('secret'));
+        useContext('secret');
         res.write(
             'This is /home. Now switched to secret context. /home is no longer available!');
       });
 
   // Binds the hooks to the subscribed context, here the secretContext
-  useSubscribe(useContext('secret'));
+  useContext('secret');
 
   // This route is recorded in the secretContext
   // When visited switches to the default context
   useGet(
       route: '/about',
       handleRequest: (req, res) {
-        useSubscribe(useContext('default'));
+        useContext('default');
         res.write(
             'This is /about. Now switched to default context. /about is no longer available!');
       });

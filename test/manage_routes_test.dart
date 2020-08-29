@@ -11,7 +11,6 @@ import 'package:geoffrey/hooks.dart'
         useDelete,
         useCustom,
         useContext,
-        useSubscribe,
         useRemoveGet,
         useRemovePut,
         useRemovePost,
@@ -93,7 +92,7 @@ void main() {
       // routes object in state is the same routes object in context
       expect(routes == CONTEXT.routes, true);
       // subscribing the state to a new context
-      useSubscribe(useContext('other'));
+      useContext('other');
       // routes object of the previous state is not the same routes object in the new context
       expect(routes == CONTEXT.routes, false);
       // since state always references the subscribed context the routes object

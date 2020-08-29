@@ -8,7 +8,6 @@ export 'src/globals/typedefs.dart';
 export 'src/hooks/use_default_response_headers.dart';
 export 'src/hooks/use_middleware.dart';
 export 'src/hooks/use_context.dart';
-export 'src/hooks/use_subscribe.dart';
 export 'src/hooks/use_query_params.dart';
 export 'src/hooks/use_json.dart';
 export 'src/hooks/use_public_dir.dart';
