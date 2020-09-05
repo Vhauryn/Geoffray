@@ -8,7 +8,7 @@ void main() {
 
   useGet(
       route: '/switch',
-      handleRequest: (req, res) {
+      handleRequest: (req, res, _) {
         useContext('secret');
         res.write('switched to secret');
       });
@@ -19,7 +19,7 @@ void main() {
 
   useGet(
       route: '/switch',
-      handleRequest: (req, res) {
+      handleRequest: (req, res, _) {
         useContext('default');
         res.write('switched to default');
       });

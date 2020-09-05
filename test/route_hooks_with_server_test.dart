@@ -23,13 +23,13 @@ void main() {
 
     setUpAll(() async {
       server = await useHttpServer('localhost', 8080);
-      useGet(route: home, handleRequest: (req, res) => res.write('GET'));
-      useDelete(route: home, handleRequest: (req, res) => res.write('DELETE'));
-      usePatch(route: home, handleRequest: (req, res) => res.write('PATCH'));
+      useGet(route: home, handleRequest: (req, res, _) => res.write('GET'));
+      useDelete(route: home, handleRequest: (req, res, _) => res.write('DELETE'));
+      usePatch(route: home, handleRequest: (req, res, _) => res.write('PATCH'));
       useCustom(
           route: home,
           method: 'x-custom-method',
-          handleRequest: (req, res) => res.write('CUSTOM'));
+          handleRequest: (req, res, _) => res.write('CUSTOM'));
     });
     test('useGet', () async {
       Response response = await dio.get(home);
@@ -44,7 +44,7 @@ void main() {
             equals('HTTP STATUS: 405 - Method Not Allowed'));
       }
 
-      usePost(route: home, handleRequest: (req, res) => res.write('POST'));
+      usePost(route: home, handleRequest: (req, res, _) => res.write('POST'));
       Response response = await dio.post(home);
       expect(response.toString(), equals('POST'));
     });
