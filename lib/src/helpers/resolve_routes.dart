@@ -11,7 +11,7 @@ String dynamicRouteExists(String baseRoute) {
   String dynamicRoute = '';
   CONTEXT.routes.entries.any((pathName) {
     bool exists = pathName.key.contains(baseRoute);
-    if (exists) dynamicRoute = pathName.key;
+    if (exists && pathName.key.contains(':')) dynamicRoute = pathName.key;
     return exists;
   });
 
@@ -26,17 +26,13 @@ Future<void> resolveRoutes(HttpRequest request) async {
   String basePath = uriPathSegmentsExist ? request.uri.pathSegments.first : '';
   String dynamicRoute = dynamicRouteExists(basePath);
 
-  if (isValidRoute(path)) {
-    print('1');
+  if (isValidRoute(path))
     await resolveMethod(path, method, request);
-  } else if (CONTEXT.publicDir != null) {
-    print('2');
+  else if (CONTEXT.publicDir != null)
     await serveHtmlContent(request);
-  } else if (dynamicRoute.isNotEmpty) {
-    print('3');
+  else if (dynamicRoute.isNotEmpty)
     await resolveDynamicRoute(request, dynamicRoute, method);
-  } else {
-    print('not found');
+  else {
     request.response.statusCode = HttpStatus.notFound;
     request.response.write('HTTP STATUS: 404 - Not Found');
   }
