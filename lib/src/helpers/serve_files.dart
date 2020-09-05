@@ -8,11 +8,12 @@ Future<dynamic> serveFiles(HttpRequest req) async {
   final toFilePath = Platform.script.resolve(pathToResolve).toFilePath();
   final index = File(toFilePath);
 
-  if (!await index.exists())
-    return req.response.statusCode = HttpStatus.notFound;
+  if (!await index.exists()) {
+    req.response.statusCode = HttpStatus.notFound;
+    return req.response.write('HTTP STATUS: 404 - Not Found');
+  }
 
   final mimeType = mime(fileName) ?? 'text/plain; charset=UTF-8';
-
   req.response.headers.add('content-type', mimeType);
   return req.response.addStream(index.openRead());
 }

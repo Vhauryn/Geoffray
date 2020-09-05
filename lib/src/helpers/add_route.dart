@@ -6,9 +6,17 @@ void addRoute(String method, String path, HandleReqRes hr,
     [HandleMiddleware hg]) {
   if (path == '/') throw "The route $path is reserved and can't be set";
 
+  List<int> indexes = [];
+  List<String> list = path.split('/').where((str) => str?.isNotEmpty).toList();
+
+  for (int i = 0; i < list.length; i++)
+    if (list[i].startsWith(':')) indexes.add(i);
+
   putMethod() => {REQUEST: hr, GUARD: hg};
-  putRoute() => HashMap<String, Map<String, Function>>.from({
-        method: {REQUEST: hr, GUARD: hg}
+  putRoute() => HashMap<String, dynamic>.from({
+        method: {REQUEST: hr, GUARD: hg},
+        'DYNAMIC_PATH_SEGMENTS': list,
+        'PATH_SEGMENT_INDEXES': indexes
       });
 
   CONTEXT.routes.containsKey(path)

@@ -10,9 +10,14 @@ void main() {
   // overrides the method if it already exists
   // handleGuard is optional and must return a boolean!
   useGet(
-      route: '/home',
+      route: '/home/:amount/cookies/:flavor',
       handleRequest: (req, res) => res.write('hello'),
       handleGuard: (req, res) => true); // optional
+
+  useGet(
+      route: '/home',
+      handleRequest: (req, res) => res.write('babuu'),
+      handleGuard: (req, res) => true);
 
   // here we add an additional post method to the route /home
   usePost(route: '/home', handleRequest: (req, res) => res.write('world'));
