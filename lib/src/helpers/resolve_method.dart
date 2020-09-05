@@ -6,14 +6,15 @@ import '../globals/typedefs.dart';
 import '../hooks/use_json.dart';
 
 Future<void> resolveMethod(
-    String path, String method, HttpRequest request) async {
+    String path, String method, HttpRequest request, [dynamicParams]) async {
   if (CONTEXT.routes[path].containsKey(method)) {
     HandleMiddleware handleGuard = CONTEXT.routes[path][method][GUARD];
     HandleReqRes handleResponse = CONTEXT.routes[path][method][REQUEST];
     if (await handleMiddleware(request, request.response))
       await handleRoute(handleGuard, handleResponse, request, {
         'queryParams': request.uri.queryParameters,
-        'json': await useJSON(request)
+        'json': await useJSON(request),
+        'dynamicParams': dynamicParams ?? {}
       });
     else {
       request.response.statusCode = HttpStatus.unprocessableEntity;

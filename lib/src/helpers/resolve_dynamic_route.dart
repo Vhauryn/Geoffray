@@ -7,7 +7,7 @@ Future<void> resolveDynamicRoute(
   Map mappedValues = mapDynamicPathToValues(request, dynamicRoute);
 
   if (mappedValues.isNotEmpty && isDynamicPathValid(request, dynamicRoute)) {
-    await resolveMethod(dynamicRoute, method, request);
+    await resolveMethod(dynamicRoute, method, request, mappedValues);
   } else {
     request.response.statusCode = HttpStatus.notFound;
     request.response.write('HTTP STATUS: 404 - Not Found');
