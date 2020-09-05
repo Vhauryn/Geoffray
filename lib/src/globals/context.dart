@@ -10,7 +10,7 @@ class Context {
   bool shouldAutoClose = true;
   String httpProtocol = 'http';
   Set<FutureOr<bool> Function(HttpRequest, HttpResponse)> middlewares = Set();
-  HashMap<String, HashMap<String, Map<String, Function>>> routes = HashMap();
+  HashMap<String, HashMap<String, dynamic>> routes = HashMap();
   Map<String, Object> defaultResponseHeaders = Map();
   Context(this.ctxName);
 }

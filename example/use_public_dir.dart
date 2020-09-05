@@ -4,22 +4,22 @@ import 'package:geoffrey/hooks.dart'
 void main() {
   useContext('default');
   useDefaultResponseHeaders({'x-default': 'def'});
-  usePublicDir('./example/mocks_data_assets/web-default');
+  usePublicDir('../example/mocks_data_assets/web-default');
 
   useGet(
       route: '/switch',
-      handleRequest: (req, res) {
+      handleRequest: (req, res, _) {
         useContext('secret');
         res.write('switched to secret');
       });
 
   useContext('secret');
   useDefaultResponseHeaders({'x-secret': 'sec'});
-  usePublicDir('./example/mocks_data_assets/web-secret');
+  usePublicDir('../example/mocks_data_assets/web-secret');
 
   useGet(
       route: '/switch',
-      handleRequest: (req, res) {
+      handleRequest: (req, res, _) {
         useContext('default');
         res.write('switched to default');
       });

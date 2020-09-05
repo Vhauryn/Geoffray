@@ -3,7 +3,7 @@ import 'dart:io';
 
 // Optional params do not work yet : Dart 2.9.0
 typedef HandleReqRes = FutureOr<void> Function(
-    HttpRequest req, HttpResponse res);
+    HttpRequest req, HttpResponse res, Map<String, dynamic> data);
 typedef HandleMiddleware = FutureOr<bool> Function(
     HttpRequest req, HttpResponse res);
 typedef Route = void Function(String method, String path, HandleReqRes reqres,
