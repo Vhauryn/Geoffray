@@ -7,7 +7,7 @@ void addRoute(String method, String path, HandleReqRes hr,
   if (path == ROOT_PATH) throw "The route $path is reserved and can't be set";
 
   List<int> indexes = [];
-  List<String> list = path.split('/').where((str) => str?.isNotEmpty).toList();
+  final list = path.split('/').where((str) => str?.isNotEmpty).toList();
 
   for (int i = 0; i < list.length; i++)
     if (list[i].startsWith(':')) indexes.add(i);

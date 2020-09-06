@@ -6,12 +6,17 @@ import 'dynamic_path_is_valid.dart';
 
 Future<void> resolveDynamicRoute(
     HttpRequest request, String dynamicRoute, method) async {
-  Map mappedValues = dynamicPathToValues(request, dynamicRoute);
-
-  if (mappedValues.isNotEmpty && dynamicPathIsValid(request, dynamicRoute))
-    await resolveMethod(dynamicRoute, method, request, mappedValues);
-  else {
+  if (!dynamicPathIsValid(request, dynamicRoute)) {
     request.response.statusCode = HttpStatus.notFound;
-    request.response.write(HTTP_NOT_FOUND);
+    return request.response.write(HTTP_NOT_FOUND);
   }
+
+  final mappedValues = dynamicPathToValues(request, dynamicRoute);
+
+  if (mappedValues.isEmpty) {
+    request.response.statusCode = HttpStatus.notFound;
+    return request.response.write(HTTP_NOT_FOUND);
+  }
+
+  await resolveMethod(dynamicRoute, method, request, mappedValues);
 }
