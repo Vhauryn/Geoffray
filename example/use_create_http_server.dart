@@ -16,7 +16,7 @@ Future<void> main() async {
   useRequestHandler(server);
 
   // yeah Dart XML (aka JSX) would be awesome!
-  const String htmlString = ''' 
+  const String html = ''' 
     <h1>
       <span style="color:green">
         hallo
@@ -27,5 +27,5 @@ Future<void> main() async {
     </h1>
   ''';
 
-  useGet(route: '/home', handleRequest: (req, res, _) => res.write(htmlString));
+  useGet(route: '/home', handleRequest: (req, res, data) => res.write(html));
 }

@@ -6,8 +6,8 @@ FutureOr<bool> handleMiddleware(HttpRequest req, HttpResponse res) async {
   FutureOr<bool> result = true;
 
   if (CONTEXT.middlewares.isNotEmpty)
-    await for (var mid in Stream.fromIterable(CONTEXT.middlewares))
-      result = await mid(req, res);
+    await for (var middleware in Stream.fromIterable(CONTEXT.middlewares))
+      result = await middleware(req, res);
 
   return result;
 }

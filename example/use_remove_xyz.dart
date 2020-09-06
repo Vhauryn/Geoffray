@@ -12,7 +12,7 @@ void main() {
   // adding /switch route to default context
   useGet(
       route: '/switch',
-      handleRequest: (req, res, _) {
+      handleRequest: (req, res, data) {
         useContext('secret'); // changing to secret context
         res.write('switched to secret');
       },
@@ -25,7 +25,7 @@ void main() {
   // adding /switch route to secret
   useGet(
       route: '/switch',
-      handleRequest: (req, res, _) {
+      handleRequest: (req, res, data) {
         useRemoveGet('/switch'); // removing /switch route from secret context
         useContext('default'); // changing to default context
         res.write('switched to default');

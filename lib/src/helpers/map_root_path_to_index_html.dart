@@ -3,8 +3,8 @@ import '../globals/context.dart';
 
 Future<dynamic> mapRootPathToIndexHTml(HttpRequest req) async {
   final pathToResolve = '${CONTEXT.publicDir}/index.html';
-  final toFilePath = Platform.script.resolve(pathToResolve).toFilePath();
-  final index = File(toFilePath);
+  final filePath = Platform.script.resolve(pathToResolve).toFilePath();
+  final index = File(filePath);
 
   if (await index.exists()) {
     req.response.headers.contentType = ContentType.html;

@@ -12,15 +12,15 @@ void main() {
   // handleGuard is optional and must return a boolean!
   useGet(
       route: '/home/:amount/cookies/:flavor',
-      handleRequest: (req, res, _) => res.write('hello $_'),
+      handleRequest: (req, res, data) => res.write('hello $data'),
       handleGuard: (req, res) => true); // optional
 
   useGet(
       route: '/home',
-      handleRequest: (req, res, _) => res.write('babuu'),
+      handleRequest: (req, res, data) => res.write('babuu'),
       handleGuard: (req, res) => true);
 
   // here we add an additional post method to the route /home
   usePost(
-      route: '/home', handleRequest: (req, res, _) => res.write('${jsonEncode(_)}'));
+      route: '/home', handleRequest: (req, res, data) => res.write('${jsonEncode(data)}'));
 }

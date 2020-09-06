@@ -12,7 +12,7 @@ void main() {
   // When visited switches to the secret context
   useGet(
       route: '/home',
-      handleRequest: (req, res, _) {
+      handleRequest: (req, res, data) {
         useContext('secret');
         res.write(
             'This is /home. Now switched to secret context. /home is no longer available!');
@@ -25,7 +25,7 @@ void main() {
   // When visited switches to the default context
   useGet(
       route: '/about',
-      handleRequest: (req, res, _) {
+      handleRequest: (req, res, data) {
         useContext('default');
         res.write(
             'This is /about. Now switched to default context. /about is no longer available!');

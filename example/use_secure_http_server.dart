@@ -14,7 +14,7 @@ void main() {
   // handleGuard is optional and must return a boolean!
   useGet(
       route: '/home',
-      handleRequest: (req, res, _) =>
+      handleRequest: (req, res, data) =>
           res.write('<h1>hallo "secure" world</h1>'),
       handleGuard: (req, res) => true); // optional
 }

@@ -1,5 +1,9 @@
 import 'package:geoffrey/hooks.dart'
-    show useCreateSecureHttpServer, useSecurityContext, useRequestHandler, useGet;
+    show
+        useCreateSecureHttpServer,
+        useSecurityContext,
+        useRequestHandler,
+        useGet;
 
 Future<void> main() async {
   // Creates and returns a new HttpServer and bindSecures it to the given host:port
@@ -17,7 +21,7 @@ Future<void> main() async {
   useRequestHandler(server);
 
   // yeah Dart XML (aka JSX) would be awesome!
-  const String htmlString = ''' 
+  const String html = ''' 
     <h1>
       <span style="color:green">
         hallo
@@ -28,5 +32,5 @@ Future<void> main() async {
     </h1>
   ''';
 
-  useGet(route: '/home', handleRequest: (req, res, _) => res.write(htmlString));
+  useGet(route: '/home', handleRequest: (req, res, data) => res.write(html));
 }

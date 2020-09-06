@@ -85,9 +85,8 @@ void main() {
       useRemoveDelete(home);
       expect(routes[home].containsKey(DELETE), false);
       useRemovePatch(home);
-      print(routes);
       expect(routes.containsKey(home), false);
-    }, skip: 'Need to also delete PATH_SEGMENT_INDEXES and DYNAMIC_PATH_SEGMENTS');
+    });
 
     test('state properties always references the context properties', () {
       // routes object in state is the same routes object in context

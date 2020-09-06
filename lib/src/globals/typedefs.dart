@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:io';
+import '../globals/http_data.dart';
 
 // Optional params do not work yet : Dart 2.9.0
 typedef HandleReqRes = FutureOr<void> Function(
-    HttpRequest req, HttpResponse res, Map<String, dynamic> data);
+    HttpRequest req, HttpResponse res, HttpData data);
 typedef HandleMiddleware = FutureOr<bool> Function(
     HttpRequest req, HttpResponse res);
 typedef Route = void Function(String method, String path, HandleReqRes reqres,
@@ -27,4 +28,11 @@ const String PUT = 'PUT',
     REQUEST = 'REQUEST',
     GUARD = 'GUARD',
     DEFAULT = 'DEFAULT',
-    HTTPS = 'https';
+    HTTPS = 'https',
+    ROOT_PATH = '/',
+    FAVICON = '/favicon.ico',
+    PATH_SEGMENT_INDEXES = 'PATH_SEGMENT_INDEXES',
+    DYNAMIC_PATH_SEGMENTS = 'DYNAMIC_PATH_SEGMENTS',
+    HTTP_UNPROCESSABLE_ENTITY = 'HTTP STATUS: 422 - Unprocessable Entity',
+    HTTP_NOT_FOUND = 'HTTP STATUS: 404 - Not Found',
+    HTTP_METHOD_NOT_ALLOWED = 'HTTP STATUS: 405 - Method Not Allowed';
