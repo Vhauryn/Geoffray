@@ -21,23 +21,22 @@ import 'package:geoffrey/hooks.dart'
 void main() {
   group('Manage Routes', () {
     String home = '/home';
-    HashMap<String, HashMap<String, dynamic>> routes =
-        CONTEXT.routes;
+    HashMap<String, HashMap<String, dynamic>> routes = CONTEXT.routes;
 
     test('useGet adds a route and the GET method to state/context', () {
-      useGet(route: home, handleRequest: (req, res, _) => res.write(GET));
+      useGet(route: home, handleRequest: (req, res) => res.write(GET));
       expect(routes.containsKey(home), true);
       expect(routes[home].containsKey(GET), true);
     });
 
     test('usePut adds a route and the PUT method to state/context', () {
-      usePut(route: home, handleRequest: (req, res, _) => res.write(PUT));
+      usePut(route: home, handleRequest: (req, res) => res.write(PUT));
       expect(routes.containsKey(home), true);
       expect(routes[home].containsKey(PUT), true);
     });
 
     test('usePost adds a route and the POST method to state/context', () {
-      usePost(route: home, handleRequest: (req, res, _) => res.write(POST));
+      usePost(route: home, handleRequest: (req, res) => res.write(POST));
       expect(routes.containsKey(home), true);
       expect(routes[home][POST][REQUEST] != null, true);
       expect(routes[home][POST][GUARD] == null, true);
@@ -46,7 +45,7 @@ void main() {
     test('usePatch adds a route and the PATCH method to state/context', () {
       usePatch(
           route: home,
-          handleRequest: (req, res, _) => res.write(PATCH),
+          handleRequest: (req, res) => res.write(PATCH),
           handleGuard: (req, res) => false);
       expect(routes[home].containsKey(PATCH), true);
       expect(routes[home][PATCH][REQUEST] != null, true);
@@ -56,7 +55,7 @@ void main() {
     test('useDelete adds a route and the DELETE method to state/context', () {
       useDelete(
           route: home,
-          handleRequest: (req, res, _) => res.write(DELETE),
+          handleRequest: (req, res) => res.write(DELETE),
           handleGuard: (req, res) => true);
       expect(routes[home][DELETE][REQUEST] != null, true);
       expect(routes[home][DELETE][GUARD](null, null), true);
@@ -67,7 +66,7 @@ void main() {
       useCustom(
           route: home,
           method: customMethod,
-          handleRequest: (req, res, _) => res.write(customMethod));
+          handleRequest: (req, res) => res.write(customMethod));
       expect(routes[home][customMethod][REQUEST] != null, true);
       expect(routes[home][customMethod][GUARD] == null, true);
     });

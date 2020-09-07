@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:geoffrey/hooks.dart' show useHttpServer, useGet, usePost, useRequestData;
+import 'package:geoffrey/hooks.dart'
+    show useHttpServer, useGet, usePost, useRequestData;
 
 void main() {
   // creates a new HttpServer, binds it to the given
@@ -12,7 +13,7 @@ void main() {
   // handleGuard is optional and must return a boolean!
   useGet(
       route: '/home/:amount/cookies/:flavor',
-      handleRequest: (req, res, data) async {
+      handleRequest: (req, res) async {
         final myData = await useRequestData(req);
         res.write('hello ${myData.dynamicParams}');
       },
@@ -20,11 +21,12 @@ void main() {
 
   useGet(
       route: '/home',
-      handleRequest: (req, res, data) => res.write('babuu'),
+      handleRequest: (req, res) => res.write('babuu'),
       handleGuard: (req, res) => true);
 
   // here we add an additional post method to the route /home
   usePost(
       route: '/home',
-      handleRequest: (req, res, data) => res.write('${jsonEncode(data)}'));
+      handleRequest: (req, res) =>
+          res.write('${jsonEncode({"hello": "world"})}'));
 }

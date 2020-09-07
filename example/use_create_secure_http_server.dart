@@ -32,5 +32,5 @@ Future<void> main() async {
     </h1>
   ''';
 
-  useGet(route: '/home', handleRequest: (req, res, data) => res.write(html));
+  useGet(route: '/home', handleRequest: (req, res) => res.write(html));
 }

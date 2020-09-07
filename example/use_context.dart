@@ -1,5 +1,4 @@
-import 'package:geoffrey/hooks.dart'
-    show useHttpServer, useGet, useContext;
+import 'package:geoffrey/hooks.dart' show useHttpServer, useGet, useContext;
 
 void main() {
   // If no context name is provided it returns the default context.
@@ -12,7 +11,7 @@ void main() {
   // When visited switches to the secret context
   useGet(
       route: '/home',
-      handleRequest: (req, res, data) {
+      handleRequest: (req, res) {
         useContext('secret');
         res.write(
             'This is /home. Now switched to secret context. /home is no longer available!');
@@ -25,7 +24,7 @@ void main() {
   // When visited switches to the default context
   useGet(
       route: '/about',
-      handleRequest: (req, res, data) {
+      handleRequest: (req, res) {
         useContext('default');
         res.write(
             'This is /about. Now switched to default context. /about is no longer available!');

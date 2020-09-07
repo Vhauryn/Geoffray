@@ -1,13 +1,12 @@
 import 'dart:io';
 import '../globals/typedefs.dart';
-import '../globals/request_data.dart';
 
 Future<void> handleRoute(HandleMiddleware handleGuard, HandleReqRes handleRequest,
-    HttpRequest request, RequestData data) async {
+    HttpRequest request) async {
   if (handleGuard == null)
-    await handleRequest(request, request.response, data);
+    await handleRequest(request, request.response);
   else if (await handleGuard(request, request.response))
-    await handleRequest(request, request.response, data);
+    await handleRequest(request, request.response);
   else {
     request.response.statusCode = HttpStatus.unprocessableEntity;
     request.response.write(HTTP_UNPROCESSABLE_ENTITY);
