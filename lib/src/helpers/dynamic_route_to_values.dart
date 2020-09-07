@@ -2,12 +2,18 @@ import 'dart:io';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
-Map<String, String> dynamicPathToValues(
+Map<String, String> dynamicRouteToValues(
     HttpRequest request, String dynamicRoute) {
-  if (CONTEXT.routes[dynamicRoute][PATH_SEGMENT_INDEXES].isEmpty) return {};
+  if (dynamicRoute.isEmpty) return {};
 
-  final list =
-      request.uri.path.split('/').where((str) => str?.isNotEmpty).toList();
+  final pathSegments = CONTEXT.routes[dynamicRoute][PATH_SEGMENT_INDEXES];
+
+  if (pathSegments.isEmpty) return {};
+
+  final list = request.uri.path
+      .split('/')
+      .where((segment) => segment?.isNotEmpty)
+      .toList();
 
   if (list.isEmpty) return {};
 
@@ -16,7 +22,7 @@ Map<String, String> dynamicPathToValues(
   final dynamicPathSegments =
       CONTEXT.routes[dynamicRoute][DYNAMIC_PATH_SEGMENTS];
 
-  for (int index in CONTEXT.routes[dynamicRoute][PATH_SEGMENT_INDEXES])
+  for (int index in pathSegments)
     mappedValues.putIfAbsent(
         dynamicPathSegments[index].split(':').last, () => list[index]);
 

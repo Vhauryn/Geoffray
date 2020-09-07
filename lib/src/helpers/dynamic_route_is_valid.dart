@@ -2,7 +2,7 @@ import 'dart:io';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
 
-bool dynamicPathIsValid(HttpRequest request, String dynamicRoute) {
+bool dynamicRouteIsValid(HttpRequest request, String dynamicRoute) {
   if (request.uri.pathSegments.length !=
       CONTEXT.routes[dynamicRoute][DYNAMIC_PATH_SEGMENTS].length) return false;
 

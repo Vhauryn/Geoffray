@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import '../globals/http_data.dart';
+import 'request_data.dart';
 
 // Optional params do not work yet : Dart 2.9.0
 typedef HandleReqRes = FutureOr<void> Function(
-    HttpRequest req, HttpResponse res, HttpData data);
+    HttpRequest req, HttpResponse res, RequestData data);
 typedef HandleMiddleware = FutureOr<bool> Function(
     HttpRequest req, HttpResponse res);
 typedef Route = void Function(String method, String path, HandleReqRes reqres,

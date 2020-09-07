@@ -3,11 +3,14 @@ import 'handle_route.dart';
 import 'handle_middleware.dart';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
-import '../globals/http_data.dart';
+import '../globals/request_data.dart';
 import '../hooks/use_json.dart';
 
-Future<void> resolveMethod(String path, String method, HttpRequest request,
-    [Map dynamicParams]) async {
+Future<void> resolveMethod(HttpRequest request,
+    [Map dynamicParams, String dynamicRoute]) async {
+  final path = dynamicRoute ?? request.uri.path;
+  final method = request.method;
+
   if (CONTEXT.routes[path].containsKey(method)) {
     HandleMiddleware handleGuard = CONTEXT.routes[path][method][GUARD];
     HandleReqRes handleResponse = CONTEXT.routes[path][method][REQUEST];
@@ -16,10 +19,10 @@ Future<void> resolveMethod(String path, String method, HttpRequest request,
           handleGuard,
           handleResponse,
           request,
-          HttpData.fromList([
+          RequestData.fromList([
             request.uri.queryParameters,
             await useJSON(request),
-            dynamicParams ?? {}
+            dynamicParams
           ]));
     else {
       request.response.statusCode = HttpStatus.unprocessableEntity;

@@ -8,16 +8,14 @@ import 'route_is_valid.dart';
 import 'server_html_content.dart' show serveHtmlContent;
 
 Future<void> resolveRoutes(HttpRequest request) async {
-  final path = request.uri.path;
-  final method = request.method;
   final dynamicRoute = dynamicRouteExists(request);
 
-  if (routeIsValid(path))
-    await resolveMethod(path, method, request);
+  if (routeIsValid(request))
+    await resolveMethod(request);
   else if (CONTEXT.publicDir != null)
     await serveHtmlContent(request);
   else if (dynamicRoute.isNotEmpty)
-    await resolveDynamicRoute(request, dynamicRoute, method);
+    await resolveDynamicRoute(request, dynamicRoute);
   else {
     request.response.statusCode = HttpStatus.notFound;
     request.response.write(HTTP_NOT_FOUND);
