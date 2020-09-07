@@ -8,7 +8,6 @@ Future<Map> useJSON(HttpRequest request) async {
         ? jsonDecode(await utf8.decoder.bind(request).join())
         : throw Exception('Could not parse JSON');
   } catch (error) {
-    print(error);
     return {};
   }
 }

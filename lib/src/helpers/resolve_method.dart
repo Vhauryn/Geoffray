@@ -4,7 +4,7 @@ import 'handle_middleware.dart';
 import '../globals/context.dart';
 import '../globals/typedefs.dart';
 import '../globals/request_data.dart';
-import '../hooks/use_json.dart';
+import 'decode_json.dart';
 
 Future<void> resolveMethod(HttpRequest request,
     [Map dynamicParams, String dynamicRoute]) async {

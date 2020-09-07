@@ -8,8 +8,7 @@ export 'src/globals/typedefs.dart';
 export 'src/hooks/use_default_response_headers.dart';
 export 'src/hooks/use_middleware.dart';
 export 'src/hooks/use_context.dart';
-export 'src/hooks/use_query_params.dart';
-export 'src/hooks/use_json.dart';
+export 'src/hooks/use_request_data.dart';
 export 'src/hooks/use_public_dir.dart';
 
 // server hooks
@@ -33,4 +32,3 @@ export 'src/route_hooks/use_remove_put.dart';
 export 'src/route_hooks/use_remove_patch.dart';
 export 'src/route_hooks/use_remove_post.dart';
 export 'src/route_hooks/use_remove_custom.dart';
-export 'src/hooks/use_request_data.dart';
