@@ -26,6 +26,7 @@ export 'src/route_hooks/use_post.dart';
 export 'src/route_hooks/use_put.dart';
 export 'src/route_hooks/use_patch.dart';
 export 'src/route_hooks/use_custom.dart';
+export 'src/route_hooks/use_all.dart';
 export 'src/route_hooks/use_remove_get.dart';
 export 'src/route_hooks/use_remove_delete.dart';
 export 'src/route_hooks/use_remove_put.dart';

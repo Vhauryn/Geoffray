@@ -10,6 +10,7 @@ import 'package:geoffrey/hooks.dart'
         usePatch,
         useDelete,
         useCustom,
+        useAll,
         useContext,
         useRemoveGet,
         useRemovePut,
@@ -20,7 +21,8 @@ import 'package:geoffrey/hooks.dart'
 
 void main() {
   group('Manage Routes', () {
-    String home = '/home';
+    final home = '/home';
+    final about = '/about';
     HashMap<String, HashMap<String, dynamic>> routes = CONTEXT.routes;
 
     test('useGet adds a route and the GET method to state/context', () {
@@ -85,6 +87,17 @@ void main() {
       expect(routes[home].containsKey(DELETE), false);
       useRemovePatch(home);
       expect(routes.containsKey(home), false);
+    });
+
+    test('useAll', () {
+      useAll(
+          route: about,
+          handleRequest: (req, res) => res.write('this is about..'));
+      expect(routes[about].containsKey(GET), true);
+      expect(routes[about].containsKey(PUT), true);
+      expect(routes[about].containsKey(POST), true);
+      expect(routes[about].containsKey(PATCH), true);
+      expect(routes[about].containsKey(DELETE), true);
     });
 
     test('state properties always references the context properties', () {
