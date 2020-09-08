@@ -27,18 +27,18 @@ Then add a route the server should handle and listen to.
 
     useGet(
       route: '/home',
-      handleRequest: (req, res, reqParamsAndJsonData) => res.write('hello'),
+      handleRequest: (req, res) => res.write('hello'),
       handleGuard: (req, res) => true); // optional
 
 Now let's add the **POST** method to our **/home** route.
 
     usePost(
       route: '/home',
-      handleRequest: (req, res, _) => res.write('world'));
+      handleRequest: (req, res) => res.write('world'));
 
 That's it! If interested checkout the repo and give it a go. 
 
-Visit localhost:8080/home using the methods **GET**, **POST**.
+Visit **localhost:8080/home** using the methods **GET**, **POST**.
 
 You can run this example by invoking
 
