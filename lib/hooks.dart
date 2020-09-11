@@ -33,3 +33,4 @@ export 'src/route_hooks/use_remove_put.dart';
 export 'src/route_hooks/use_remove_patch.dart';
 export 'src/route_hooks/use_remove_post.dart';
 export 'src/route_hooks/use_remove_custom.dart';
+export 'src/route_hooks/use_remove_all.dart';
